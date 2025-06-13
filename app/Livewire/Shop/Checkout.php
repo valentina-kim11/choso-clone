@@ -3,6 +3,7 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -36,18 +37,25 @@ class Checkout extends Component
 
         $wallet->decrement('balance', $total);
 
+        $order = Order::create([
+            'user_id' => $user->id,
+            'amount' => $total,
+            'status' => 'completed',
+        ]);
+
         foreach ($this->items as $item) {
-            Order::create([
-                'user_id' => $user->id,
+            OrderItem::create([
+                'order_id' => $order->id,
                 'product_id' => $item['product']->id,
-                'amount' => $item['product']->price * $item['quantity'],
-                'status' => 'completed',
+                'quantity' => $item['quantity'],
+                'price' => $item['product']->price,
             ]);
         }
 
         $this->clear();
         $this->dispatch('cart-cleared');
-        session()->flash('status', __('Payment successful!'));
+        session()->flash('order_id', $order->id);
+        return redirect()->route('shop.thank-you');
     }
 
     protected function total(): float

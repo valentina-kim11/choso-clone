@@ -7,6 +7,8 @@ use App\Livewire\Shop\Index as ShopIndex;
 use App\Livewire\Shop\Show as ShopShow;
 use App\Livewire\Shop\Cart as ShopCart;
 use App\Livewire\Shop\Checkout as ShopCheckout;
+use App\Livewire\Shop\ThankYou as ShopThankYou;
+use App\Livewire\Orders\History as OrdersHistory;
 use App\Livewire\Seller\Dashboard as SellerDashboard;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,12 @@ Route::get('/cart', ShopCart::class)->name('shop.cart');
 Route::get('/checkout', ShopCheckout::class)
     ->middleware('auth')
     ->name('shop.checkout');
+Route::get('/thank-you', ShopThankYou::class)
+    ->middleware('auth')
+    ->name('shop.thank-you');
+Route::get('/orders/history', OrdersHistory::class)
+    ->middleware('auth')
+    ->name('orders.history');
 
 Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/seller', SellerDashboard::class)->name('seller.dashboard');
