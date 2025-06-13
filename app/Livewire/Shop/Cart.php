@@ -3,6 +3,8 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Product;
+use App\Services\Checkout;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -25,6 +27,12 @@ class Cart extends Component
     public function remove(int $productId)
     {
         unset($this->items[$productId]);
+    }
+
+    public function pay()
+    {
+        Checkout::pay(Auth::user(), $this->items);
+        $this->items = [];
     }
 
     public function render()

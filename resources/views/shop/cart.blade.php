@@ -8,4 +8,6 @@
             </li>
         @endforeach
     </ul>
+    <p class="mt-4 font-semibold">Total: {{ number_format(collect($items)->sum(fn($i) => $i['product']->price * $i['quantity'])) }} Scoin</p>
+    <button wire:click="pay" class="bg-[#00796B] text-white px-4 py-2 mt-2 rounded">Pay</button>
 </div>
