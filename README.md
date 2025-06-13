@@ -22,6 +22,8 @@ Uploaded product files are stored in `storage/app/products`. To generate a publi
 
 Uploaded product files are stored in `storage/app/products`. After a purchase, buyers receive links pointing to `/download/{orderItem}`. The route validates ownership and returns the file via `Storage::disk('products')->download()`.
 
+Downloads are limited to **5 times** within **3 days** of the order date. Further requests will be rejected.
+
 
 - Checkout purchases using the built-in Scoin wallet
 - Product files stored in `storage/app/products` and downloadable via `Storage::url($product->file_path)`
