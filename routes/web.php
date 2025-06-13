@@ -18,6 +18,7 @@ Route::view('dashboard', 'dashboard')
 Route::get('/products', ShopIndex::class)->name('shop.index');
 Route::get('/products/{product}', ShopShow::class)->name('shop.show');
 Route::get('/cart', ShopCart::class)->name('shop.cart');
+Route::get('/checkout/success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
 
 Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/seller', SellerDashboard::class)->name('seller.dashboard');

@@ -33,6 +33,8 @@ class Cart extends Component
     {
         Checkout::pay(Auth::user(), $this->items);
         $this->items = [];
+
+        return redirect()->route('checkout.success');
     }
 
     public function render()
