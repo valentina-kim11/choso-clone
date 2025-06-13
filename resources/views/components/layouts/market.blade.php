@@ -19,6 +19,9 @@
         <main class="p-6">
             {{ $slot }}
         </main>
+        <aside class="fixed top-16 right-0 w-64 h-full bg-[#111827] border-l border-[#374151] p-4 overflow-y-auto">
+            <livewire:shop.cart />
+        </aside>
         @fluxScripts
     </body>
 </html>

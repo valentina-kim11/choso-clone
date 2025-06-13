@@ -12,25 +12,30 @@ This project is a multi‑seller platform for digital products built with **Lara
 
 ## Setup on Codex
 
-1. Install PHP and Node dependencies:
+1. If PHP is not installed, add it with:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y php php-cli php-mbstring php-xml
+   ```
+2. Install PHP and Node dependencies:
    ```bash
    composer install
    npm install
    ```
-2. Copy the environment file and generate the application key:
+3. Copy the environment file and generate the application key:
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
-3. Run the database migrations:
+4. Run the database migrations:
    ```bash
    php artisan migrate
    ```
-4. Build frontend assets:
+5. Build frontend assets:
    ```bash
    npm run build
    ```
-5. Start the development server:
+6. Start the development server:
    ```bash
    php artisan serve
    ```
