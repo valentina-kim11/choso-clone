@@ -12,19 +12,65 @@ class Cart extends Component
 {
     public array $items = [];
 
+    public function mount(): void
+    {
+        $this->loadFromSession();
+    }
+
     #[On('add-to-cart')]
     public function add(int $productId)
     {
         $product = Product::findOrFail($productId);
-        $this->items[$productId] = [
-            'product' => $product,
-            'quantity' => ($this->items[$productId]['quantity'] ?? 0) + 1,
-        ];
+        if (isset($this->items[$productId])) {
+            $this->items[$productId]['quantity']++;
+        } else {
+            $this->items[$productId] = [
+                'product' => $product,
+                'quantity' => 1,
+            ];
+        }
+        $this->storeToSession();
     }
 
     public function remove(int $productId)
     {
         unset($this->items[$productId]);
+        $this->storeToSession();
+    }
+
+    public function clear(): void
+    {
+        $this->items = [];
+        session()->forget('cart.items');
+    }
+
+    #[On('cart-cleared')]
+    public function handleClear(): void
+    {
+        $this->clear();
+    }
+
+    protected function loadFromSession(): void
+    {
+        $stored = session('cart.items', []);
+        foreach ($stored as $id => $quantity) {
+            $product = Product::find($id);
+            if ($product) {
+                $this->items[$id] = [
+                    'product' => $product,
+                    'quantity' => $quantity,
+                ];
+            }
+        }
+    }
+
+    protected function storeToSession(): void
+    {
+        $sessionItems = [];
+        foreach ($this->items as $id => $item) {
+            $sessionItems[$id] = $item['quantity'];
+        }
+        session(['cart.items' => $sessionItems]);
     }
 
     public function render()

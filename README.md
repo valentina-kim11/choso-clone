@@ -9,6 +9,7 @@ This project is a multi‑seller platform for digital products built with **Lara
 - Livewire components for browsing products, viewing details and managing the cart
 - Seller dashboard
 - Choso brand theme colours
+- Checkout purchases using the built-in Scoin wallet
 
 ## Setup on Codex
 
