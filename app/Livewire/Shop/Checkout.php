@@ -2,8 +2,7 @@
 
 namespace App\Livewire\Shop;
 
-use App\Models\Order;
-use App\Models\OrderItem;
+use App\Services\CheckoutService;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -28,29 +27,12 @@ class Checkout extends Component
             return null;
         }
 
-        $total = $this->total();
-        $wallet = $user->wallet;
+        $service = app(CheckoutService::class);
+        $order = $service->pay($user, $this->items);
 
-        if ($wallet->balance < $total) {
+        if (! $order) {
             session()->flash('status', __('Insufficient wallet balance'));
             return null;
-        }
-
-        $wallet->decrement('balance', $total);
-
-        $order = Order::create([
-            'user_id' => $user->id,
-            'amount' => $total,
-            'status' => 'completed',
-        ]);
-
-        foreach ($this->items as $item) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $item['product']->id,
-                'quantity' => $item['quantity'],
-                'price' => $item['product']->price,
-            ]);
         }
 
         $this->clear();

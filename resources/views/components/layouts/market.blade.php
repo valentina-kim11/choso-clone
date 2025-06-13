@@ -9,6 +9,7 @@
             <nav class="flex gap-4">
                 @auth
                     <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
+                    <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
 
 
 

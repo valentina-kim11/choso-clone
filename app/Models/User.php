@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Wallet;
 use App\Models\Order;
 
 class User extends Authenticatable
@@ -19,12 +18,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    protected static function booted(): void
-    {
-        static::created(function (User $user): void {
-            $user->wallet()->create(['balance' => 0]);
-        });
-    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +30,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'wallet',
     ];
 
     /**
@@ -58,6 +53,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'wallet' => 'decimal:2',
         ];
     }
 
@@ -76,11 +72,6 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
-    }
-
-    public function wallet()
-    {
-        return $this->hasOne(Wallet::class);
     }
 
     public function orders()

@@ -8,7 +8,6 @@ This project is a multi-seller platform for digital goods built with **Laravel**
 - Product, Category, Order and Wallet management
 - Livewire components for browsing products and managing the cart
 - Seller dashboard with Choso brand theme colours
-- Digital product files stored in `storage/app/products` and served via a protected `/download/{orderItem}` route
 - Checkout purchases using the built-in Scoin wallet
 
 ### Product Files
@@ -49,3 +48,5 @@ Automated tests require **PHP >= 8.2** and **Composer**:
 ```bash
 php vendor/bin/phpunit
 ```
+
+To run the tests, ensure PHP 8.2 and Composer are installed on your system.
