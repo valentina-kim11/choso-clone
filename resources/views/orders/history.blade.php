@@ -14,6 +14,7 @@
         @endforeach
     </ul>
 
+
     <h1 class="text-xl font-semibold">Order History</h1>
     @foreach($orders as $order)
         <div class="border border-[#374151] p-4 rounded">
@@ -27,5 +28,6 @@
             </ul>
         </div>
     @endforeach
+
 
 </div>
