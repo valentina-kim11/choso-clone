@@ -17,6 +17,7 @@ use App\Livewire\Seller\Dashboard as SellerDashboard;
 use App\Livewire\Shop\Checkout as ShopCheckout;
     Route::get('/seller/orders', \App\Livewire\Seller\Orders::class)->name('seller.orders');
     Route::get('/products/my', \App\Livewire\Seller\MyProducts::class)->name('products.my');
+    Route::get('/seller/products/create', \App\Livewire\Seller\CreateProduct::class)->name('seller.products.create');
 use App\Livewire\Shop\ThankYou as ShopThankYou;
 use App\Livewire\Orders\History as OrdersHistory;
 use App\Livewire\Seller\Dashboard as SellerDashboard;
