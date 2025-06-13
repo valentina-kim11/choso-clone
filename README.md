@@ -9,12 +9,18 @@ This project is a multi‑seller platform for digital products built with **Lara
 - Livewire components for browsing products, viewing details and managing the cart
 - Seller dashboard
 - Choso brand theme colours
+
 - Checkout purchases using the built-in Scoin wallet
 - Product files stored in `storage/app/products` and downloadable via `Storage::url($product->file_path)`
 
 ### Product Files
 
 Uploaded product files are stored in `storage/app/products`. To generate a public URL to a file, use `Storage::url($product->file_path)`.
+
+
+- Checkout purchases using the built-in Scoin wallet
+
+
 
 ## Setup on Codex
 
