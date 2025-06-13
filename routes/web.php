@@ -7,6 +7,7 @@ use App\Livewire\Shop\Index as ShopIndex;
 use App\Livewire\Shop\Show as ShopShow;
 use App\Livewire\Shop\Cart as ShopCart;
 use App\Livewire\Seller\Dashboard as SellerDashboard;
+use App\Livewire\Orders\History as OrdersHistory;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', ShopIndex::class)->name('home');
@@ -31,5 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
+
+Route::get('/orders/history', OrdersHistory::class)
+    ->middleware('auth')
+    ->name('orders.history');
 
 require __DIR__.'/auth.php';
