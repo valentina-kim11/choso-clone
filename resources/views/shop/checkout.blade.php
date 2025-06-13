@@ -15,6 +15,7 @@
 </div>
 
 
+
 <x-layouts.market>
     <div class="space-y-4">
         <h1 class="text-xl font-semibold">{{ session('status') }}</h1>
@@ -30,5 +31,6 @@
         @endif
     </div>
 </x-layouts.market>
+
 
 

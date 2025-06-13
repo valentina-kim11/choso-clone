@@ -11,6 +11,14 @@ This project is a multi‑seller platform for digital products built with **Lara
 - Choso brand theme colours
 
 - Checkout purchases using the built-in Scoin wallet
+- Product files stored in `storage/app/products` and served via a protected `/download/{orderItem}` route
+
+### Product Files
+
+Uploaded product files are stored in `storage/app/products`. After a purchase, buyers receive links pointing to `/download/{orderItem}`. The route validates ownership and returns the file via `Storage::disk('products')->download()`.
+
+
+- Checkout purchases using the built-in Scoin wallet
 - Product files stored in `storage/app/products` and downloadable via `Storage::url($product->file_path)`
 
 ### Product Files
@@ -19,6 +27,7 @@ Uploaded product files are stored in `storage/app/products`. To generate a publi
 
 
 - Checkout purchases using the built-in Scoin wallet
+
 
 
 

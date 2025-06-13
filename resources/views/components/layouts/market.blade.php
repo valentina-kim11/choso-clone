@@ -11,7 +11,9 @@
                     <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
 
 
+
                     <a href="{{ route('orders.history') }}" wire:navigate>Order History</a>
+
 
 
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

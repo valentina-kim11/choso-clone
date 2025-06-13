@@ -5,8 +5,10 @@ namespace App\Livewire\Shop;
 use App\Models\Product;
 
 
+
 use App\Services\Checkout;
 use Illuminate\Support\Facades\Auth;
+
 
 
 use Livewire\Attributes\Layout;
@@ -41,10 +43,12 @@ class Cart extends Component
         $this->storeToSession();
 
 
+
         $this->items[$productId] = [
             'product' => $product,
             'quantity' => ($this->items[$productId]['quantity'] ?? 0) + 1,
         ];
+
 
     }
 
@@ -90,6 +94,7 @@ class Cart extends Component
         session(['cart.items' => $sessionItems]);
 
 
+
     }
 
     public function pay()
@@ -98,6 +103,7 @@ class Cart extends Component
         $this->items = [];
 
         return redirect()->route('checkout.success');
+
 
 
     }

@@ -7,12 +7,20 @@
                 <div>Tổng: {{ number_format($order->amount) }} Scoin</div>
                 <ul class="ml-4 list-disc">
                     @foreach($order->items as $item)
+
+                        <li>
+                            {{ $item->product->name }} x {{ $item->quantity }}
+                            <a href="{{ route('download', $item) }}" class="text-[#4FC3F7] ml-2">Tải file</a>
+                        </li>
+
                         <li>{{ $item->product->name }} x {{ $item->quantity }}</li>
+
                     @endforeach
                 </ul>
             </li>
         @endforeach
     </ul>
+
 
 
     <h1 class="text-xl font-semibold">Order History</h1>
@@ -28,6 +36,7 @@
             </ul>
         </div>
     @endforeach
+
 
 
 </div>
