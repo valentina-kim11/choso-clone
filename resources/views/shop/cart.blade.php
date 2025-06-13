@@ -14,11 +14,4 @@
     </div>
     <a href="{{ route('shop.checkout') }}" wire:navigate class="mt-2 inline-block bg-[#00796B] text-white px-2 py-1 rounded">Checkout</a>
 
-
-
-    <p class="mt-4 font-semibold">Total: {{ number_format(collect($items)->sum(fn($i) => $i['product']->price * $i['quantity'])) }} Scoin</p>
-    <button wire:click="pay" class="bg-[#00796B] text-white px-4 py-2 mt-2 rounded">Pay</button>
-
-
-
 </div>

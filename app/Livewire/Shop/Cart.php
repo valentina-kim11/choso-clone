@@ -41,21 +41,11 @@ class Cart extends Component
             ];
         }
         $this->storeToSession();
-
-
-
-        $this->items[$productId] = [
-            'product' => $product,
-            'quantity' => ($this->items[$productId]['quantity'] ?? 0) + 1,
-        ];
-
-
     }
 
     public function remove(int $productId)
     {
         unset($this->items[$productId]);
-
         $this->storeToSession();
     }
 
