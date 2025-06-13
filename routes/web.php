@@ -8,6 +8,8 @@ use App\Livewire\Shop\Show as ShopShow;
 use App\Livewire\Shop\Cart as ShopCart;
 
 use App\Livewire\Shop\Checkout as ShopCheckout;
+    Route::get('/seller/orders', \App\Livewire\Seller\Orders::class)->name('seller.orders');
+    Route::get('/products/my', \App\Livewire\Seller\MyProducts::class)->name('products.my');
 use App\Livewire\Shop\ThankYou as ShopThankYou;
 use App\Livewire\Orders\History as OrdersHistory;
 use App\Livewire\Seller\Dashboard as SellerDashboard;

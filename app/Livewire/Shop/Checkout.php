@@ -8,6 +8,7 @@ use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 #[Layout('components.layouts.market')]
 class Checkout extends Component
@@ -19,12 +20,12 @@ class Checkout extends Component
         $this->loadFromSession();
     }
 
-    public function pay(): void
+    public function pay(): RedirectResponse|null
     {
         $user = Auth::user();
 
         if (! $user) {
-            return;
+            return null;
         }
 
         $total = $this->total();
@@ -32,7 +33,7 @@ class Checkout extends Component
 
         if ($wallet->balance < $total) {
             session()->flash('status', __('Insufficient wallet balance'));
-            return;
+            return null;
         }
 
         $wallet->decrement('balance', $total);
@@ -55,6 +56,7 @@ class Checkout extends Component
         $this->clear();
         $this->dispatch('cart-cleared');
         session()->flash('order_id', $order->id);
+
         return redirect()->route('shop.thank-you');
     }
 
