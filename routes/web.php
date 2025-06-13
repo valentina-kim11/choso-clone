@@ -57,6 +57,19 @@ Route::get('/download/{orderItem}', function (\App\Models\OrderItem $orderItem) 
         abort(403);
     }
 
+    if ($orderItem->downloadLogs()->count() >= 5) {
+        abort(403, 'Download limit reached');
+    }
+
+    if ($orderItem->order->created_at->lt(now()->subDays(3))) {
+        abort(403, 'Download period expired');
+    }
+
+    $orderItem->downloadLogs()->create([
+        'user_id' => $user->id,
+        'ip_address' => request()->ip(),
+    ]);
+
     return \Illuminate\Support\Facades\Storage::disk('products')
         ->download($orderItem->product->file_path);
 })->middleware('auth')->name('download');
