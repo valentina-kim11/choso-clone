@@ -3,8 +3,6 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Product;
-use App\Services\CheckoutService;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -73,22 +71,10 @@ class Cart extends Component
         foreach ($this->items as $id => $item) {
             $sessionItems[$id] = $item['quantity'];
         }
+
         session(['cart.items' => $sessionItems]);
-
-
-
     }
 
-    public function pay()
-    {
-        app(CheckoutService::class)->pay(Auth::user(), $this->items);
-        $this->items = [];
-
-        return redirect()->route('checkout.success');
-
-
-
-    }
 
     public function render()
     {
