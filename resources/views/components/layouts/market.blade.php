@@ -8,11 +8,17 @@
             <a href="{{ route('home') }}" class="font-bold" wire:navigate>Choso</a>
             <nav class="flex gap-4">
                 @auth
+
                     @if(auth()->user()->role === 'seller')
                         <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
                         <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
                         <a href="{{ route('seller.withdraw') }}" wire:navigate>Rút Scoin</a>
                     @endif
+
+                    <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
+                    <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
+
+
 
 
                     <a href="{{ route('orders.history') }}" wire:navigate>Order History</a>
