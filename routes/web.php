@@ -64,9 +64,12 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/products/my', \App\Livewire\Seller\MyProducts::class)->name('products.my');
     Route::get('/seller/products/create', \App\Livewire\Seller\CreateProduct::class)->name('seller.products.create');
     Route::get('/seller/revenue', \App\Livewire\Seller\Revenue::class)->name('seller.revenue');
+
+    Route::get('/seller/withdraw', \App\Livewire\Seller\Withdraw::class)->name('seller.withdraw');
+
 });
 
-Route::get('/checkout/success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -77,3 +80,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
