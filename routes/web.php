@@ -7,6 +7,17 @@ use App\Livewire\Shop\Index as ShopIndex;
 use App\Livewire\Shop\Show as ShopShow;
 use App\Livewire\Shop\Cart as ShopCart;
 
+Route::get('/download/{orderItem}', function (\App\Models\OrderItem $orderItem) {
+    $user = \Illuminate\Support\Facades\Auth::user();
+
+    if (! $user || $orderItem->order->user_id !== $user->id) {
+        abort(403);
+    }
+
+    return \Illuminate\Support\Facades\Storage::disk('products')
+        ->download($orderItem->product->file_path);
+})->middleware('auth')->name('download');
+
 use App\Livewire\Shop\Checkout as ShopCheckout;
 use App\Livewire\Shop\ThankYou as ShopThankYou;
 use App\Livewire\Orders\History as OrdersHistory;
