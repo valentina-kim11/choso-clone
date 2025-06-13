@@ -10,6 +10,9 @@ This project is a multi‑seller platform for digital products built with **Lara
 - Seller dashboard
 - Choso brand theme colours
 
+- Checkout purchases using the built-in Scoin wallet
+
+
 ## Setup on Codex
 
 1. If PHP is not installed, add it with:
