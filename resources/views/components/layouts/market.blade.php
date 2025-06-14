@@ -5,13 +5,13 @@
     </head>
     <body class="min-h-screen bg-dark text-white" x-data="{ filtersOpen: false }">
         <livewire:header />
-        <div class="flex">
-            <aside class="hidden md:block w-64 border-r border-brand-gray p-4">
+        <div class="grid grid-cols-1 lg:grid-cols-[16rem,1fr,16rem]">
+            <aside class="hidden lg:block border-r border-brand-gray p-4">
                 <livewire:shop.category-filter />
             </aside>
-            <main class="flex-1 p-6">
-                <button class="md:hidden mb-4" @click="filtersOpen = !filtersOpen">{{ __('Categories') }}</button>
-                <div x-show="filtersOpen" class="md:hidden mb-4 border border-brand-gray p-4">
+            <main class="p-6">
+                <button class="lg:hidden mb-4" @click="filtersOpen = !filtersOpen">{{ __('Categories') }}</button>
+                <div x-show="filtersOpen" class="lg:hidden mb-4 border border-brand-gray p-4">
                     <livewire:shop.category-filter />
                 </div>
                 {{ $slot }}
