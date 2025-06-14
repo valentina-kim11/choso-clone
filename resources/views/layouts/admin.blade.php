@@ -3,9 +3,9 @@
 <head>
     @include('partials.head')
 </head>
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+<body class="min-h-screen bg-secondary dark:bg-dark text-dark dark:text-white">
     <div class="flex">
-        <aside class="w-64 bg-gray-800 text-white min-h-screen p-4 space-y-2">
+        <aside class="w-64 bg-brand-gray text-white min-h-screen p-4 space-y-2 dark:bg-brand-gray">
             <a href="{{ route('admin.dashboard') }}" class="font-bold block mb-4">Admin</a>
             <nav class="space-y-2">
                 <a href="{{ route('admin.dashboard') }}" class="block">Dashboard</a>
