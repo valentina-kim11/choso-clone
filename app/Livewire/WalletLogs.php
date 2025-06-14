@@ -1,15 +1,21 @@
 <?php
 
-namespace App\Livewire\Buyer;
+namespace App\Livewire;
 
-use App\Models\WalletLog;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
 #[Layout('components.layouts.market')]
 class WalletLogs extends Component
 {
+    public ?string $viewerType = null;
+
+    public function mount(): void
+    {
+        $this->viewerType ??= Auth::user()?->role;
+    }
+
     public function render()
     {
         $logs = [];
@@ -17,8 +23,9 @@ class WalletLogs extends Component
             $logs = $user->walletLogs()->latest()->get();
         }
 
-        return view('buyer.wallet-logs', [
+        return view('wallet-logs', [
             'logs' => $logs,
+            'viewerType' => $this->viewerType,
         ]);
     }
 }

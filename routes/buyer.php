@@ -12,7 +12,7 @@ use App\Livewire\Shop\Cart as ShopCart;
 use App\Livewire\Shop\Checkout as ShopCheckout;
 use App\Livewire\Shop\ThankYou as ShopThankYou;
 use App\Livewire\Orders\History as OrdersHistory;
-use App\Livewire\Buyer\WalletLogs as BuyerWalletLogs;
+use App\Livewire\WalletLogs;
 
 Route::middleware(['auth', 'buyerOnly'])->group(function () {
     Route::get('/products', ShopIndex::class)->name('shop.index');
@@ -21,7 +21,7 @@ Route::middleware(['auth', 'buyerOnly'])->group(function () {
     Route::get('/checkout', ShopCheckout::class)->name('shop.checkout');
     Route::get('/thank-you', ShopThankYou::class)->name('shop.thank-you');
     Route::get('/orders/history', OrdersHistory::class)->name('orders.history');
-    Route::get('/shop/wallet-logs', BuyerWalletLogs::class)->name('shop.wallet-logs');
+    Route::get('/shop/wallet-logs', WalletLogs::class)->name('shop.wallet-logs');
 
     Route::get('/download/{orderItem}', function (OrderItem $orderItem, PdfService $pdfService) {
         $user = Auth::user();

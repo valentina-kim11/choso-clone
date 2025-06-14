@@ -7,7 +7,7 @@ use App\Livewire\Seller\MyProducts;
 use App\Livewire\Seller\CreateProduct;
 use App\Livewire\Seller\Revenue;
 use App\Livewire\Seller\Withdraw;
-use App\Livewire\Seller\WalletLogs as SellerWalletLogs;
+use App\Livewire\WalletLogs;
 use App\Livewire\AdminCouponManager;
 
 Route::middleware(['auth', 'sellerOnly'])
@@ -22,6 +22,6 @@ Route::middleware(['auth', 'sellerOnly'])
         Route::get('/revenue', Revenue::class)->name('revenue');
         Route::get('/coupons', AdminCouponManager::class)->name('coupons');
         Route::get('/withdraw', Withdraw::class)->name('withdraw');
-        Route::get('/wallet-logs', SellerWalletLogs::class)->name('wallet-logs');
+        Route::get('/wallet-logs', WalletLogs::class)->name('wallet-logs');
     });
 
