@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Wallet;
 use App\Models\Order;
 use App\Models\WalletLog;
 use App\Models\Withdrawal;
@@ -21,12 +20,7 @@ class User extends Authenticatable
     public const ROLE_SELLER = 'seller';
     public const ROLE_ADMIN = 'admin';
 
-    protected static function booted(): void
-    {
-        static::created(function (User $user): void {
-            $user->wallet()->create(['balance' => 0]);
-        });
-    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -81,11 +75,6 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
-    }
-
-    public function wallet()
-    {
-        return $this->hasOne(Wallet::class);
     }
 
     public function orders()
