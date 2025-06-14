@@ -19,7 +19,10 @@ class History extends Component
 
         $orders = [];
         if ($user = Auth::user()) {
-            $orders = $user->orders()->with('items.product')->latest()->get();
+            $orders = $user->orders()
+                ->with(['items.product', 'licenseKey'])
+                ->latest()
+                ->get();
         }
 
 
