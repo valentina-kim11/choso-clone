@@ -35,13 +35,6 @@ class Withdrawals extends Component
             ]);
         });
 
-        $withdrawal->status = 'approved';
-        $withdrawal->save();
-
-        $user = $withdrawal->user;
-        $user->wallet -= $withdrawal->amount;
-        $user->save();
-
     }
 
     public function reject(Withdrawal $withdrawal): void
@@ -56,10 +49,6 @@ class Withdrawals extends Component
             $withdrawal->note = 'Rejected';
             $withdrawal->save();
         });
-
-        $withdrawal->status = 'rejected';
-        $withdrawal->note = 'Rejected';
-        $withdrawal->save();
 
     }
 
