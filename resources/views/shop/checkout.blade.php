@@ -10,7 +10,7 @@
         @endforeach
     </ul>
     <div class="space-x-2">
-        <input type="text" wire:model="couponCode" placeholder="{{ __('Coupon code') }}" class="border p-1 rounded text-black" />
+        <input type="text" wire:model="couponCode" placeholder="{{ __('Coupon code') }}" class="border border-brand-gray p-1 rounded text-black" />
         <button type="button" wire:click="applyCoupon" class="bg-info text-white px-2 py-1 rounded">{{ __('Apply') }}</button>
         @error('couponCode') <span class="text-danger">{{ $message }}</span> @enderror
     </div>

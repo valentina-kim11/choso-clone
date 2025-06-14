@@ -6,7 +6,7 @@
     @endif
 
     <form wire:submit.prevent="save" class="mb-4 space-x-2">
-        <input type="text" wire:model="name" placeholder="{{ __('Name') }}" class="border p-1 rounded" />
+        <input type="text" wire:model="name" placeholder="{{ __('Name') }}" class="border border-brand-gray p-1 rounded" />
         <button type="submit" class="bg-primary px-3 py-1 rounded text-white">
             {{ $editingId ? __('Update') : __('Add') }}
         </button>

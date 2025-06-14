@@ -6,7 +6,7 @@
     @endif
 
     <div class="mb-4">
-        <input type="text" wire:model="search" placeholder="{{ __('Search') }}" class="border p-1 rounded" />
+        <input type="text" wire:model="search" placeholder="{{ __('Search') }}" class="border border-brand-gray p-1 rounded" />
     </div>
 
     <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
@@ -25,7 +25,7 @@
                     <td class="p-2">{{ $user->name }}</td>
                     <td class="p-2">{{ $user->email }}</td>
                     <td class="p-2">
-                        <input type="number" wire:model.defer="amounts.{{ $user->id }}" class="border p-1 rounded w-24" />
+                        <input type="number" wire:model.defer="amounts.{{ $user->id }}" class="border border-brand-gray p-1 rounded w-24" />
                     </td>
                     <td class="p-2">
                         <button wire:click="topUp({{ $user->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Top Up') }}</button>
