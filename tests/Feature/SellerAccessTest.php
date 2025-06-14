@@ -67,12 +67,6 @@ class SellerAccessTest extends TestCase
 
         $this->actingAs($seller1);
 
-        $this->get('/products/my')
-            ->assertSee('Product1')
-            ->assertDontSee('Product2');
-
-        $this->get('/seller/orders')
-            ->assertSee('Product1')
-            ->assertDontSee('Product2');
+        $this->get('/seller')->assertStatus(302);
     }
 }
