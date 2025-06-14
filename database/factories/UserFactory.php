@@ -32,6 +32,8 @@ class UserFactory extends Factory
 
             'wallet' => 0,
 
+            'is_approved' => true,
+
             'remember_token' => Str::random(10),
         ];
     }

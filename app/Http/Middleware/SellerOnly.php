@@ -11,7 +11,9 @@ class SellerOnly
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() || $request->user()->role !== User::ROLE_SELLER) {
+        $user = $request->user();
+
+        if (! $user || $user->role !== User::ROLE_SELLER || ! $user->is_approved) {
             abort(403);
         }
 
