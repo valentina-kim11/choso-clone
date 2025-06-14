@@ -13,6 +13,10 @@
 
                 <a href="{{ route('admin.wallet-logs') }}" class="block">Lịch sử ví</a>
 
+                <a href="{{ route('admin.topup-wallet') }}" class="block">Nạp ví cho user</a>
+
+                <a href="{{ route('admin.approve-sellers') }}" class="block">Duyệt Seller</a>
+
             </nav>
         </aside>
         <div class="flex-1 flex flex-col">

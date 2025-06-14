@@ -39,6 +39,7 @@ class User extends Authenticatable
         'password',
         'role',
         'wallet',
+        'is_approved',
     ];
 
     /**
@@ -62,6 +63,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'wallet' => 'decimal:2',
+            'is_approved' => 'boolean',
         ];
     }
 
@@ -91,9 +93,15 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function transactions()
+    public function walletLogs()
     {
         return $this->hasMany(WalletLog::class);
+    }
+
+    // Backward compatibility
+    public function transactions()
+    {
+        return $this->walletLogs();
     }
 
     public function downloads()
