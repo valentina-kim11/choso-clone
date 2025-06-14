@@ -15,6 +15,7 @@
                     @if(auth()->user()->role === 'seller')
                         <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
                         <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
+                        <a href="{{ route('seller.coupons') }}" wire:navigate>Coupons</a>
                         <a href="{{ route('seller.withdraw') }}" wire:navigate>Rút Scoin</a>
 
                         <a href="{{ route('seller.wallet-logs') }}" wire:navigate>Lịch sử ví</a>

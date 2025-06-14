@@ -10,6 +10,7 @@ use App\Livewire\Admin\TopUpWallet;
 use App\Livewire\Admin\TopUpWallet;
 use App\Livewire\Admin\AdminApproveSeller;
 use App\Livewire\Admin\ManageCategories;
+use App\Livewire\AdminCouponManager;
 
 use App\Livewire\Settings\Appearance;
 
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'adminOnly'])
         Route::get('/top-up-wallet', TopUpWallet::class)->name('top-up-wallet');
         Route::get('/approve-sellers', AdminApproveSeller::class)->name('approve-sellers');
         Route::get('/categories', ManageCategories::class)->name('categories');
+        Route::get('/coupons', AdminCouponManager::class)->name('coupons');
 
         Route::get('/appearance', Appearance::class)->name('appearance');
     });
