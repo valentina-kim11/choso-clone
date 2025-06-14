@@ -22,6 +22,7 @@
                 <a href="{{ route('admin.approve-sellers') }}" class="block">Duyệt Seller</a>
 
                 <a href="{{ route('admin.categories') }}" class="block">Categories</a>
+                <a href="{{ route('admin.coupons') }}" class="block">Coupons</a>
 
 
             </nav>
