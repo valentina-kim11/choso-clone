@@ -76,6 +76,7 @@ class User extends Authenticatable
     }
 
     public function orders()
+
     {
         return $this->hasMany(Order::class);
     }
@@ -88,5 +89,14 @@ class User extends Authenticatable
     public function walletLogs()
     {
         return $this->hasMany(WalletLog::class);
+
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+
     }
 }
