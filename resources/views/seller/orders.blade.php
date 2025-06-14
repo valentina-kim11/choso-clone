@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">My Orders</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('My Orders') }}</h1>
     <ul class="space-y-2">
         @foreach($orders as $order)
             <li class="border border-brand-gray p-2 rounded">

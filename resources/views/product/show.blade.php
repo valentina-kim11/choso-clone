@@ -22,10 +22,10 @@
         <div class="flex items-center gap-2 mt-4">
             <span class="font-semibold">{{ $product->seller->name }}</span>
         </div>
-        <button wire:click="addToCart" class="bg-primary text-white px-4 py-2 rounded">Mua ngay</button>
+        <button wire:click="addToCart" class="bg-primary text-white px-4 py-2 rounded">{{ __('Mua ngay') }}</button>
         @if($licenseKey)
             <div class="bg-secondary text-dark p-2 rounded">
-                License: {{ $licenseKey }}
+                {{ __('License') }}: {{ $licenseKey }}
             </div>
         @endif
     </div>

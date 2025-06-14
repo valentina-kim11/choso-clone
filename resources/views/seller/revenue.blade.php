@@ -1,18 +1,18 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">Doanh thu</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('Doanh thu') }}</h1>
     <div class="mb-4">
         <select wire:model="filter" class="bg-dark border border-brand-gray p-1 rounded">
-            <option value="day">Hôm nay</option>
-            <option value="month">Tháng này</option>
+            <option value="day">{{ __('Hôm nay') }}</option>
+            <option value="month">{{ __('Tháng này') }}</option>
         </select>
     </div>
-    <p class="mb-2">Tổng: {{ number_format($total) }} Scoin</p>
+    <p class="mb-2">{{ __('Tổng tiền') }}: {{ number_format($total) }} Scoin</p>
     <table class="w-full border border-brand-gray">
         <thead>
             <tr>
-                <th class="p-2 text-left">Sản phẩm</th>
-                <th class="p-2">Số lượng</th>
-                <th class="p-2">Tổng tiền</th>
+                <th class="p-2 text-left">{{ __('Sản phẩm') }}</th>
+                <th class="p-2">{{ __('Số lượng') }}</th>
+                <th class="p-2">{{ __('Tổng tiền') }}</th>
             </tr>
         </thead>
         <tbody>

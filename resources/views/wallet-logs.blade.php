@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">Lịch sử ví</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('Lịch sử ví') }}</h1>
     <table class="w-full border border-brand-gray text-sm">
         <thead>
             <tr>
-                <th class="p-2">Thời gian</th>
-                <th class="p-2">Loại</th>
-                <th class="p-2">Số tiền</th>
-                <th class="p-2">Ghi chú</th>
+                <th class="p-2">{{ __('Thời gian') }}</th>
+                <th class="p-2">{{ __('Loại') }}</th>
+                <th class="p-2">{{ __('Số tiền') }}</th>
+                <th class="p-2">{{ __('Ghi chú') }}</th>
             </tr>
         </thead>
         <tbody>
