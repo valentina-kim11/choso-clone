@@ -39,7 +39,6 @@ class DownloadPdfTest extends TestCase
 
         $order = Order::create([
             'user_id' => $buyer->id,
-            'product_id' => $product->id,
             'amount' => 10,
             'status' => 'completed',
         ]);
