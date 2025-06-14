@@ -38,18 +38,21 @@ class Cart extends Component
         }
 
         app(CartService::class)->storeToSession($this->items);
+        $this->dispatch('cart-updated', count: count($this->items));
     }
 
     public function remove(int $productId): void
     {
         unset($this->items[$productId]);
         app(CartService::class)->storeToSession($this->items);
+        $this->dispatch('cart-updated', count: count($this->items));
     }
 
     public function clear(): void
     {
         $this->items = [];
         app(CartService::class)->clearSession();
+        $this->dispatch('cart-updated', count: 0);
     }
 
     #[On('cart-cleared')]

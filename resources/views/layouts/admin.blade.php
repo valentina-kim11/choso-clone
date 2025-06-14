@@ -25,7 +25,7 @@
             </nav>
         </aside>
         <div class="flex-1 flex flex-col">
-            <x-layouts.header />
+            <livewire:header />
             <main class="flex-1 p-6">
                 {{ $slot }}
             </main>
