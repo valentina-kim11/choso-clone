@@ -1,4 +1,4 @@
-<div>
+<div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('My Products') }}</h1>
 
     <a href="{{ route('seller.products.create') }}" class="bg-info text-dark px-4 py-2 rounded" wire:navigate>{{ __('Add Product') }}</a>

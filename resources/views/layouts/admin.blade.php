@@ -4,8 +4,8 @@
     @include('partials.head')
 </head>
 <body class="min-h-screen bg-secondary dark:bg-dark text-dark dark:text-white">
-    <div class="flex">
-        <aside class="w-64 bg-brand-gray text-white min-h-screen p-4 space-y-2 dark:bg-brand-gray">
+    <div class="flex flex-col sm:flex-row">
+        <aside class="hidden sm:block sm:w-64 bg-brand-gray text-white min-h-screen p-4 space-y-2 dark:bg-brand-gray">
             <a href="{{ route('admin.dashboard') }}" class="font-bold block mb-4">{{ __('Admin') }}</a>
             <nav class="space-y-2">
                 <a href="{{ route('admin.dashboard') }}" class="block">{{ __('Dashboard') }}</a>

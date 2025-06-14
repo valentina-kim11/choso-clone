@@ -1,4 +1,4 @@
-<div>
+<div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('Lịch sử ví') }}</h1>
     <table class="w-full border border-brand-gray text-sm">
         <thead>

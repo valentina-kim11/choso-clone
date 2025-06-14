@@ -1,4 +1,4 @@
-<div>
+<div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('Tổng quan') }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">

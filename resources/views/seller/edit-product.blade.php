@@ -1,4 +1,4 @@
-<form wire:submit.prevent="save" class="space-y-4">
+<form wire:submit.prevent="save" class="space-y-4 max-w-lg mx-auto p-4 sm:p-6">
     <h1 class="text-xl font-semibold">{{ __('Edit Product') }}</h1>
     <div>
         <label class="block">{{ __('Name') }}</label>

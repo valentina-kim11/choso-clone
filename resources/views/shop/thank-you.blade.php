@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-4 px-4 sm:px-6">
     <h1 class="text-xl font-semibold text-center">{{ __('Cảm ơn bạn đã mua hàng') }}</h1>
     @if($order)
         <ul class="space-y-2">
