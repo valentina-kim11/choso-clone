@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
+use App\Models\WalletLog;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,6 +15,31 @@ class TopUpWallet extends Component
     use WithPagination;
 
     public string $search = '';
+    public array $amounts = [];
+
+    public function topUp(User $user): void
+    {
+        $amount = (float) ($this->amounts[$user->id] ?? 0);
+
+        if ($amount <= 0) {
+            return;
+        }
+
+        DB::transaction(function () use ($user, $amount) {
+            $user->increment('wallet', $amount);
+
+            WalletLog::create([
+                'user_id'    => $user->id,
+                'type'       => 'deposit',
+                'amount'     => $amount,
+                'description'=> 'Top up by admin',
+                'by_admin'   => true,
+            ]);
+        });
+
+        $this->amounts[$user->id] = '';
+        session()->flash('status', __('Wallet topped up'));
+    }
 
     public function render()
     {

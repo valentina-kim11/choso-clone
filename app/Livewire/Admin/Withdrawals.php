@@ -32,6 +32,7 @@ class Withdrawals extends Component
                 'type' => 'withdraw',
                 'amount' => $withdrawal->amount,
                 'description' => 'Withdrawal #' . $withdrawal->id,
+                'by_admin' => true,
             ]);
         });
 
