@@ -7,14 +7,14 @@
 
     <form wire:submit.prevent="save" class="mb-4 space-y-2">
         <div class="space-x-2">
-            <input type="text" wire:model="code" placeholder="{{ __('Code') }}" class="border p-1 rounded" />
-            <select wire:model="type" class="border p-1 rounded">
+            <input type="text" wire:model="code" placeholder="{{ __('Code') }}" class="border border-brand-gray p-1 rounded" />
+            <select wire:model="type" class="border border-brand-gray p-1 rounded">
                 <option value="percent">{{ __('Percent') }}</option>
                 <option value="fixed">{{ __('Fixed') }}</option>
             </select>
-            <input type="number" wire:model="value" placeholder="{{ __('Value') }}" class="border p-1 rounded w-24" step="0.01" />
-            <input type="date" wire:model="expires_at" class="border p-1 rounded" />
-            <input type="number" wire:model="usage_limit" placeholder="{{ __('Usage limit') }}" class="border p-1 rounded w-24" />
+            <input type="number" wire:model="value" placeholder="{{ __('Value') }}" class="border border-brand-gray p-1 rounded w-24" step="0.01" />
+            <input type="date" wire:model="expires_at" class="border border-brand-gray p-1 rounded" />
+            <input type="number" wire:model="usage_limit" placeholder="{{ __('Usage limit') }}" class="border border-brand-gray p-1 rounded w-24" />
             <button type="submit" class="bg-primary text-white px-3 py-1 rounded">{{ $editingId ? __('Update') : __('Add') }}</button>
             @if($editingId)
                 <button type="button" wire:click="$set('editingId', null)" class="px-2">{{ __('Cancel') }}</button>
