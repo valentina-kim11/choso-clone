@@ -7,10 +7,15 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Shop\Index as ShopIndex;
 use App\Livewire\Shop\Show as ShopShow;
 use App\Livewire\Shop\Cart as ShopCart;
+
+use App\Livewire\Seller\Dashboard as SellerDashboard;
+use Illuminate\Support\Facades\Route;
+
 use App\Livewire\Shop\Checkout as ShopCheckout;
 use App\Livewire\Shop\ThankYou as ShopThankYou;
 use App\Livewire\Orders\History as OrdersHistory;
 use App\Livewire\Seller\Dashboard as SellerDashboard;
+
 
 Route::get('/', ShopIndex::class)->name('home');
 
@@ -20,6 +25,14 @@ Route::view('dashboard', 'dashboard')
 
 Route::get('/products', ShopIndex::class)->name('shop.index');
 Route::get('/products/{product}', ShopShow::class)->name('shop.show');
+
+Route::get('/cart', ShopCart::class)->name('shop.cart');
+
+Route::middleware(['auth', 'seller'])->group(function () {
+    Route::get('/seller', SellerDashboard::class)->name('seller.dashboard');
+});
+
+
 Route::get('/cart', ShopCart::class)
     ->middleware(['auth', 'buyer'])
     ->name('shop.cart');
@@ -76,6 +89,7 @@ Route::middleware(['auth', 'seller'])->group(function () {
 
 
 });
+
 
 
 

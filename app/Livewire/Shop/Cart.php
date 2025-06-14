@@ -5,8 +5,10 @@ namespace App\Livewire\Shop;
 use App\Models\Product;
 
 
+
 use App\Services\CheckoutService;
 use Illuminate\Support\Facades\Auth;
+
 
 
 use Livewire\Attributes\Layout;
@@ -17,16 +19,24 @@ use Livewire\Component;
 class Cart extends Component
 {
     public array $items = [];
+
     public function mount(): void
     {
         $this->loadFromSession();
     }
 
 
+
     #[On('add-to-cart')]
     public function add(int $productId)
     {
         $product = Product::findOrFail($productId);
+
+        $this->items[$productId] = [
+            'product' => $product,
+            'quantity' => ($this->items[$productId]['quantity'] ?? 0) + 1,
+        ];
+
 
         if (isset($this->items[$productId])) {
             $this->items[$productId]['quantity']++;
@@ -37,11 +47,16 @@ class Cart extends Component
             ];
         }
         $this->storeToSession();
+
     }
 
     public function remove(int $productId)
     {
         unset($this->items[$productId]);
+
+    }
+
+
         $this->storeToSession();
     }
 
@@ -93,6 +108,7 @@ class Cart extends Component
 
 
     }
+
 
 
 
