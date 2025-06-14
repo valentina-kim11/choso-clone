@@ -15,7 +15,8 @@
         @endif
     </form>
 
-    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="min-w-full text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('Name') }}</th>
@@ -29,11 +30,12 @@
                     <td class="p-2">{{ $category->name }}</td>
                     <td class="p-2">{{ $category->slug }}</td>
                     <td class="p-2 space-x-2">
-                        <button wire:click="edit({{ $category->id }})" class="text-info">{{ __('Edit') }}</button>
+                        <button wire:click="edit({{ $category->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Edit') }}</button>
                         <button wire:click="delete({{ $category->id }})" class="text-danger">{{ __('Delete') }}</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>

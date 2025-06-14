@@ -1,6 +1,7 @@
 <div>
     <h1 class="text-xl font-semibold mb-4">{{ __('Yêu cầu rút tiền') }}</h1>
-    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="min-w-full text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('User') }}</th>
@@ -17,7 +18,7 @@
                     <td class="p-2">{{ $withdrawal->status }}</td>
                     <td class="p-2 space-x-2">
                         @if($withdrawal->status === 'pending')
-                            <button wire:click="approve({{ $withdrawal->id }})" class="text-info">{{ __('Duyệt') }}</button>
+                            <button wire:click="approve({{ $withdrawal->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Duyệt') }}</button>
                             <button wire:click="reject({{ $withdrawal->id }})" class="text-danger">{{ __('Từ chối') }}</button>
                         @endif
                     </td>
@@ -25,4 +26,5 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>

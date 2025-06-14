@@ -1,7 +1,7 @@
 <div>
     <h1 class="text-xl font-semibold mb-4">{{ __('My Products') }}</h1>
 
-    <a href="{{ route('seller.products.create') }}" class="bg-info text-black px-4 py-2 rounded" wire:navigate>{{ __('Add Product') }}</a>
+    <a href="{{ route('seller.products.create') }}" class="bg-info text-dark px-4 py-2 rounded" wire:navigate>{{ __('Add Product') }}</a>
 
 
 
@@ -10,7 +10,7 @@
             <li class="border border-brand-gray p-2 flex justify-between">
                 <span>{{ $product->name }}</span>
                 <div class="space-x-2">
-                    <a href="{{ route('seller.products.edit', $product) }}" class="text-info" wire:navigate>{{ __('Edit') }}</a>
+                    <a href="{{ route('seller.products.edit', $product) }}" class="bg-info text-dark px-2 py-1 rounded" wire:navigate>{{ __('Edit') }}</a>
                     <button type="button" wire:click="delete({{ $product->id }})" class="text-danger">{{ __('Delete') }}</button>
                 </div>
             </li>

@@ -5,7 +5,8 @@
         <div class="mb-4 text-info">{{ session('status') }}</div>
     @endif
 
-    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="min-w-full text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('Tên') }}</th>
@@ -21,10 +22,11 @@
                     <td class="p-2">{{ $seller->email }}</td>
                     <td class="p-2">{{ $seller->created_at->format('Y-m-d') }}</td>
                     <td class="p-2">
-                        <button wire:click="approve({{ $seller->id }})" class="text-info">{{ __('Duyệt') }}</button>
+                        <button wire:click="approve({{ $seller->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Duyệt') }}</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
