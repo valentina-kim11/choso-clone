@@ -6,20 +6,20 @@
 <body class="min-h-screen bg-secondary dark:bg-dark text-dark dark:text-white">
     <div class="flex">
         <aside class="w-64 bg-brand-gray text-white min-h-screen p-4 space-y-2 dark:bg-brand-gray">
-            <a href="{{ route('admin.dashboard') }}" class="font-bold block mb-4">Admin</a>
+            <a href="{{ route('admin.dashboard') }}" class="font-bold block mb-4">{{ __('Admin') }}</a>
             <nav class="space-y-2">
-                <a href="{{ route('admin.dashboard') }}" class="block">Dashboard</a>
-                <a href="{{ route('admin.withdrawals') }}" class="block">Yêu cầu rút tiền</a>
+                <a href="{{ route('admin.dashboard') }}" class="block">{{ __('Dashboard') }}</a>
+                <a href="{{ route('admin.withdrawals') }}" class="block">{{ __('Yêu cầu rút tiền') }}</a>
 
-                <a href="{{ route('admin.wallet-logs') }}" class="block">Lịch sử ví</a>
+                <a href="{{ route('admin.wallet-logs') }}" class="block">{{ __('Lịch sử ví') }}</a>
 
 
-                <a href="{{ route('admin.topup-wallet') }}" class="block">Nạp ví cho user</a>
+                <a href="{{ route('admin.topup-wallet') }}" class="block">{{ __('Nạp ví cho user') }}</a>
 
-                <a href="{{ route('admin.approve-sellers') }}" class="block">Duyệt Seller</a>
+                <a href="{{ route('admin.approve-sellers') }}" class="block">{{ __('Duyệt Seller') }}</a>
 
-                <a href="{{ route('admin.categories') }}" class="block">Categories</a>
-                <a href="{{ route('admin.coupons') }}" class="block">Coupons</a>
+                <a href="{{ route('admin.categories') }}" class="block">{{ __('Categories') }}</a>
+                <a href="{{ route('admin.coupons') }}" class="block">{{ __('Coupons') }}</a>
 
 
             </nav>

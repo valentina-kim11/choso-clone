@@ -98,4 +98,5 @@ return [
     'Your Cart' => 'Your Cart',
     'Yêu cầu rút tiền' => 'Withdrawal Requests',
     'Đơn hàng' => 'Orders',
+    'Đơn hàng mới từ' => 'New order from',
 ];
