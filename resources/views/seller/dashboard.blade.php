@@ -3,15 +3,15 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">{{ __('Doanh thu') }}</p>
+            <p class="text-sm text-brand-gray/60">{{ __('Doanh thu') }}</p>
             <p class="text-2xl font-semibold">{{ number_format($revenue) }} Scoin</p>
         </div>
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">{{ __('Đơn hàng') }}</p>
+            <p class="text-sm text-brand-gray/60">{{ __('Đơn hàng') }}</p>
             <p class="text-2xl font-semibold">{{ $orderCount }}</p>
         </div>
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">{{ __('Sản phẩm') }}</p>
+            <p class="text-sm text-brand-gray/60">{{ __('Sản phẩm') }}</p>
             <p class="text-2xl font-semibold">{{ $productCount }}</p>
         </div>
     </div>

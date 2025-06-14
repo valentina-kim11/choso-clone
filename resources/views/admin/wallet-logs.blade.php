@@ -3,7 +3,7 @@
     <div class="mb-4">
         <input type="number" wire:model="userId" placeholder="{{ __('User ID') }}" class="border p-1 rounded" />
     </div>
-    <table class="min-w-full bg-white dark:bg-zinc-800 text-sm">
+    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('User') }}</th>
