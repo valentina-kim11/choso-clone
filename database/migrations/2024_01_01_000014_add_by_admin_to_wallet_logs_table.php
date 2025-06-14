@@ -9,7 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('wallet_logs', function (Blueprint $table) {
-            $table->boolean('by_admin')->default(false)->after('description');
+            if (! Schema::hasColumn('wallet_logs', 'by_admin')) {
+                $table->boolean('by_admin')->default(false)->after('description');
+            }
         });
     }
 
