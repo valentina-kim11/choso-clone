@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\WalletLog;
 
 class User extends Authenticatable
 {
@@ -75,6 +76,7 @@ class User extends Authenticatable
     }
 
     public function orders()
+
     {
         return $this->hasMany(Order::class);
     }
@@ -82,5 +84,19 @@ class User extends Authenticatable
     public function withdrawals()
     {
         return $this->hasMany(Withdrawal::class);
+    }
+
+    public function walletLogs()
+    {
+        return $this->hasMany(WalletLog::class);
+
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+
     }
 }

@@ -33,6 +33,9 @@ Route::get('/thank-you', ShopThankYou::class)
 Route::get('/orders/history', OrdersHistory::class)
     ->middleware(['auth', 'buyer'])
     ->name('orders.history');
+Route::get('/shop/wallet-logs', \App\Livewire\Buyer\WalletLogs::class)
+    ->middleware(['auth', 'buyer'])
+    ->name('shop.wallet-logs');
 
 Route::get('/download/{orderItem}', function (\App\Models\OrderItem $orderItem) {
     $user = \Illuminate\Support\Facades\Auth::user();
@@ -66,6 +69,11 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/seller/revenue', \App\Livewire\Seller\Revenue::class)->name('seller.revenue');
 
     Route::get('/seller/withdraw', \App\Livewire\Seller\Withdraw::class)->name('seller.withdraw');
+    Route::get('/seller/wallet-logs', \App\Livewire\Seller\WalletLogs::class)->name('seller.wallet-logs');
+
+
+    Route::get('/seller/withdraw', \App\Livewire\Seller\Withdraw::class)->name('seller.withdraw');
+
 
 });
 

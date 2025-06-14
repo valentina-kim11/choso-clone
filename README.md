@@ -10,6 +10,10 @@ This project is a multi-seller platform for digital goods built with **Laravel**
 - Seller dashboard with Choso brand theme colours
 - Checkout purchases using the built-in Scoin wallet
 
+### Wallet Logs
+
+Every change to a user's wallet balance is recorded in the `wallet_logs` table. Buyers access their history at `/shop/wallet-logs`, sellers at `/seller/wallet-logs`, and admins can review all logs at `/admin/wallet-logs`.
+
 ### Product Files
 
 Uploaded files are stored in `storage/app/products`. After purchase, buyers can download their files via `/download/{orderItem}`. Each file can be downloaded up to **5 times** within **3 days** of the order date.
@@ -44,7 +48,7 @@ Uploaded files are stored in `storage/app/products`. After purchase, buyers can 
    php artisan serve
    ```
 
-Automated tests require **PHP >= 8.2** and **Composer**:
+To run the tests, install PHP >= 8.2 and Composer then execute:
 ```bash
 php vendor/bin/phpunit
 ```

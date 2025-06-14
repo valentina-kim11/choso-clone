@@ -6,7 +6,13 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
 
+use App\Models\WalletLog;
 use Illuminate\Support\Facades\DB;
+
+
+
+use Illuminate\Support\Facades\DB;
+
 
 
 class CheckoutService
@@ -38,6 +44,17 @@ class CheckoutService
                 ]);
             }
 
+
+            WalletLog::create([
+                'user_id' => $user->id,
+                'type' => 'purchase',
+                'amount' => $total,
+                'description' => 'Order #' . $order->id,
+            ]);
+
+            return $order;
+        });
+
             return $order;
         });
 
@@ -59,6 +76,7 @@ class CheckoutService
         }
 
         return $order;
+
 
     }
 }

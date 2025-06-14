@@ -10,6 +10,9 @@
             <nav class="space-y-2">
                 <a href="{{ route('admin.dashboard') }}" class="block">Dashboard</a>
                 <a href="{{ route('admin.withdrawals') }}" class="block">Yêu cầu rút tiền</a>
+
+                <a href="{{ route('admin.wallet-logs') }}" class="block">Lịch sử ví</a>
+
             </nav>
         </aside>
         <div class="flex-1 flex flex-col">
