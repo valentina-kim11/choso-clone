@@ -98,4 +98,5 @@ return [
     'Your Cart' => 'Giỏ hàng của bạn',
     'Yêu cầu rút tiền' => 'Yêu cầu rút tiền',
     'Đơn hàng' => 'Đơn hàng',
+    'Đơn hàng mới từ' => 'Đơn hàng mới từ',
 ];

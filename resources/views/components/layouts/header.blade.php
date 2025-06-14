@@ -1,21 +1,21 @@
 <header class="bg-primary p-4 flex justify-between items-center">
-    <a href="{{ route('home') }}" class="font-bold" wire:navigate>Choso</a>
+    <a href="{{ route('home') }}" class="font-bold" wire:navigate>{{ __('Choso') }}</a>
     <nav class="flex items-center gap-4">
         @auth
             @if(auth()->user()->role === 'seller')
-                <a href="{{ route('seller.dashboard') }}" wire:navigate>Tổng quan</a>
-                <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
-                <a href="{{ route('seller.coupons') }}" wire:navigate>Coupons</a>
-                <a href="{{ route('seller.withdraw') }}" wire:navigate>Rút Scoin</a>
-                <a href="{{ route('seller.wallet-logs') }}" wire:navigate>Lịch sử ví</a>
+                <a href="{{ route('seller.dashboard') }}" wire:navigate>{{ __('Tổng quan') }}</a>
+                <a href="{{ route('seller.revenue') }}" wire:navigate>{{ __('Doanh thu') }}</a>
+                <a href="{{ route('seller.coupons') }}" wire:navigate>{{ __('Coupons') }}</a>
+                <a href="{{ route('seller.withdraw') }}" wire:navigate>{{ __('Rút Scoin') }}</a>
+                <a href="{{ route('seller.wallet-logs') }}" wire:navigate>{{ __('Lịch sử ví') }}</a>
             @else
-                <a href="{{ route('shop.wallet-logs') }}" wire:navigate>Lịch sử ví</a>
+                <a href="{{ route('shop.wallet-logs') }}" wire:navigate>{{ __('Lịch sử ví') }}</a>
             @endif
-            <a href="{{ route('orders.history') }}" wire:navigate>Order History</a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <a href="{{ route('orders.history') }}" wire:navigate>{{ __('Order History') }}</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
             <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">@csrf</form>
         @else
-            <a href="{{ route('login') }}" wire:navigate>Login</a>
+            <a href="{{ route('login') }}" wire:navigate>{{ __('Login') }}</a>
         @endauth
         <button type="button" class="relative" x-data @click="$dispatch('toggle-cart')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

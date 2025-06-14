@@ -10,7 +10,7 @@
                 <livewire:shop.category-filter />
             </aside>
             <main class="flex-1 p-6">
-                <button class="md:hidden mb-4" @click="filtersOpen = !filtersOpen">Categories</button>
+                <button class="md:hidden mb-4" @click="filtersOpen = !filtersOpen">{{ __('Categories') }}</button>
                 <div x-show="filtersOpen" class="md:hidden mb-4 border border-brand-gray p-4">
                     <livewire:shop.category-filter />
                 </div>
