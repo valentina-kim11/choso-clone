@@ -24,6 +24,7 @@ class CheckoutService
         $baseTotal = collect($items)
             ->sum(fn ($i) => $i['product']->price * $i['quantity']);
 
+
         // Wrap all operations in a single database transaction
         $order = DB::transaction(function () use ($user, $items, $baseTotal, $coupon) {
             // Re-check coupon validity within the transaction
@@ -45,6 +46,23 @@ class CheckoutService
             if ($user->wallet < $total) {
                 return null; // insufficient funds
             }
+
+
+        $discount = 0;
+        if ($coupon) {
+            $discount = $coupon->type === 'percent'
+                ? $total * $coupon->value / 100
+                : $coupon->value;
+            $discount = min($discount, $total);
+            $total -= $discount;
+        }
+
+        if ($user->wallet < $total) {
+            return null; // insufficient funds
+        }
+
+        // Wrap all operations in a single database transaction
+        return DB::transaction(function () use ($user, $items, $total, $coupon) {
 
             // Deduct wallet balance
             $user->decrement('wallet', $total);
@@ -78,10 +96,12 @@ class CheckoutService
                 $coupon->increment('used');
             }
 
+
             LicenseKey::create([
                 'order_id' => $order->id,
                 'key'      => (string) Str::uuid(),
             ]);
+
 
             return $order;
         });
