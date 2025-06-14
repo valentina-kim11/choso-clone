@@ -3,14 +3,21 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-dark text-white">
+    <body class="min-h-screen bg-dark text-white" x-data="{ filtersOpen: false }">
         <x-layouts.header />
-        <main class="p-6">
-            {{ $slot }}
-        </main>
-        <aside class="fixed top-16 right-0 w-64 h-full bg-dark border-l border-brand-gray p-4 overflow-y-auto">
-            <livewire:shop.cart />
-        </aside>
+        <div class="flex">
+            <aside class="hidden md:block w-64 border-r border-brand-gray p-4">
+                <livewire:shop.category-filter />
+            </aside>
+            <main class="flex-1 p-6">
+                <button class="md:hidden mb-4" @click="filtersOpen = !filtersOpen">Categories</button>
+                <div x-show="filtersOpen" class="md:hidden mb-4 border border-brand-gray p-4">
+                    <livewire:shop.category-filter />
+                </div>
+                {{ $slot }}
+            </main>
+            <livewire:shop.cart-drawer />
+        </div>
         <x-layouts.footer />
         @fluxScripts
     </body>

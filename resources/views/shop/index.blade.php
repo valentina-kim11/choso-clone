@@ -1,12 +1,3 @@
-<div class="mb-4">
-    <select wire:model="category" class="bg-brand-gray border border-brand-gray p-2 rounded">
-        <option value="">All Categories</option>
-        @foreach($categories as $cat)
-            <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
-        @endforeach
-    </select>
-</div>
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     @foreach($products as $product)
         <a href="{{ route('shop.show', $product) }}" class="border border-brand-gray rounded p-4" wire:navigate>
