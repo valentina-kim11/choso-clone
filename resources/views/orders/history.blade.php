@@ -5,6 +5,9 @@
         @foreach($orders as $order)
             <li class="border border-[#374151] p-2 rounded">
                 <div>Tổng: {{ number_format($order->amount) }} Scoin</div>
+                @if($order->licenseKey)
+                    <div>License: {{ $order->licenseKey->key }}</div>
+                @endif
                 <ul class="ml-4 list-disc">
                     @foreach($order->items as $item)
 

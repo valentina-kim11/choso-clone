@@ -7,6 +7,8 @@ use App\Models\OrderItem;
 use App\Models\User;
 use App\Models\Coupon;
 use App\Models\WalletLog;
+use App\Models\LicenseKey;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 
@@ -16,24 +18,31 @@ class CheckoutService
     public function pay(User $user, array $items, ?Coupon $coupon = null): ?Order
     {
         // Calculate total amount for the order
-        $total = collect($items)
+        $baseTotal = collect($items)
             ->sum(fn ($i) => $i['product']->price * $i['quantity']);
 
-        $discount = 0;
-        if ($coupon) {
-            $discount = $coupon->type === 'percent'
-                ? $total * $coupon->value / 100
-                : $coupon->value;
-            $discount = min($discount, $total);
-            $total -= $discount;
-        }
-
-        if ($user->wallet < $total) {
-            return null; // insufficient funds
-        }
-
         // Wrap all operations in a single database transaction
-        return DB::transaction(function () use ($user, $items, $total, $coupon) {
+        return DB::transaction(function () use ($user, $items, $baseTotal, $coupon) {
+            // Re-check coupon validity within the transaction
+            $discount = 0;
+            if ($coupon) {
+                $coupon->refresh();
+                if (! $coupon->isExpired() && ! $coupon->isMaxed()) {
+                    $discount = $coupon->type === 'percent'
+                        ? $baseTotal * $coupon->value / 100
+                        : $coupon->value;
+                    $discount = min($discount, $baseTotal);
+                } else {
+                    $coupon = null;
+                }
+            }
+
+            $total = $baseTotal - $discount;
+
+            if ($user->wallet < $total) {
+                return null; // insufficient funds
+            }
+
             // Deduct wallet balance
             $user->decrement('wallet', $total);
 
@@ -65,6 +74,11 @@ class CheckoutService
             if ($coupon) {
                 $coupon->increment('used');
             }
+
+            LicenseKey::create([
+                'order_id' => $order->id,
+                'key'      => (string) Str::uuid(),
+            ]);
 
             return $order;
         });
