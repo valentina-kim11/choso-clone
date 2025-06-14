@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\OrderItem;
-
-
-
 
 class Product extends Model
 {
@@ -35,11 +31,13 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
-
+    public function getCoverUrlAttribute(): string
+    {
+        return Storage::disk('products')->url($this->file_path);
+    }
 }
