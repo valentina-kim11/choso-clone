@@ -27,11 +27,8 @@ class Index extends Component
 
         $products = $query->get();
 
-        $categories = Category::orderBy('name')->get();
-
         return view('shop.index', [
             'products' => $products,
-            'categories' => $categories,
         ]);
     }
 }
