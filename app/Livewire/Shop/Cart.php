@@ -3,14 +3,8 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Product;
-
-
-
 use App\Services\CheckoutService;
 use Illuminate\Support\Facades\Auth;
-
-
-
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -28,35 +22,26 @@ class Cart extends Component
 
 
     #[On('add-to-cart')]
-    public function add(int $productId)
+    public function add(int $productId): void
     {
         $product = Product::findOrFail($productId);
 
-        $this->items[$productId] = [
-            'product' => $product,
-            'quantity' => ($this->items[$productId]['quantity'] ?? 0) + 1,
-        ];
-
-
+        // Increase quantity if the product already exists in cart
         if (isset($this->items[$productId])) {
             $this->items[$productId]['quantity']++;
         } else {
             $this->items[$productId] = [
-                'product' => $product,
+                'product'  => $product,
                 'quantity' => 1,
             ];
         }
-        $this->storeToSession();
 
+        $this->storeToSession();
     }
 
-    public function remove(int $productId)
+    public function remove(int $productId): void
     {
         unset($this->items[$productId]);
-
-    }
-
-
         $this->storeToSession();
     }
 
@@ -96,21 +81,34 @@ class Cart extends Component
         session(['cart.items' => $sessionItems]);
     }
 
+    /**
+     * Calculate subtotal for a given product in the cart.
+     */
+    public function subtotal(int $productId): float
+    {
+        return isset($this->items[$productId])
+            ? $this->items[$productId]['product']->price * $this->items[$productId]['quantity']
+            : 0.0;
+    }
+
+    /**
+     * Total amount of the cart.
+     */
+    public function getTotalProperty(): float
+    {
+        return collect($this->items)
+            ->sum(fn ($item) => $item['product']->price * $item['quantity']);
+    }
+
 
 
     public function pay()
     {
         app(CheckoutService::class)->pay(Auth::user(), $this->items);
-        $this->items = [];
+        $this->clear();
 
         return redirect()->route('checkout.success');
-
-
-
     }
-
-
-
 
     public function render()
     {
