@@ -8,14 +8,28 @@
             <a href="{{ route('home') }}" class="font-bold" wire:navigate>Choso</a>
             <nav class="flex gap-4">
                 @auth
+
+                    @if(auth()->user()->role === 'seller')
+                        <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
+                        <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
+                        <a href="{{ route('seller.withdraw') }}" wire:navigate>Rút Scoin</a>
+
+                        <a href="{{ route('seller.wallet-logs') }}" wire:navigate>Lịch sử ví</a>
+                    @else
+                        <a href="{{ route('shop.wallet-logs') }}" wire:navigate>Lịch sử ví</a>
+                    @endif
+
+
+                    @endif
+
                     <a href="{{ route('seller.dashboard') }}" wire:navigate>Seller Dashboard</a>
+                    <a href="{{ route('seller.revenue') }}" wire:navigate>Doanh thu</a>
+
+
 
 
 
                     <a href="{{ route('orders.history') }}" wire:navigate>Order History</a>
-
-
-
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">@csrf</form>
                 @else

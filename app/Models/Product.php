@@ -9,14 +9,6 @@ use App\Models\OrderItem;
 
 
 
-use App\Models\OrderItem;
-
-
-
-use App\Models\OrderItem;
-
-
-
 class Product extends Model
 {
     use HasFactory;

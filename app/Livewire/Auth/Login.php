@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
@@ -43,7 +44,14 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $user = Auth::user();
+        $redirect = match ($user->role) {
+            User::ROLE_ADMIN => '/admin',
+            User::ROLE_SELLER => route('seller.dashboard', absolute: false),
+            default => route('shop.index', absolute: false),
+        };
+
+        $this->redirectIntended(default: $redirect, navigate: true);
     }
 
     /**

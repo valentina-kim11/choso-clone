@@ -4,6 +4,7 @@ namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -32,6 +33,13 @@ class ConfirmPassword extends Component
 
         session(['auth.password_confirmed_at' => time()]);
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $user = Auth::user();
+        $redirect = match ($user->role) {
+            User::ROLE_ADMIN => '/admin',
+            User::ROLE_SELLER => route('seller.dashboard', absolute: false),
+            default => route('shop.index', absolute: false),
+        };
+
+        $this->redirectIntended(default: $redirect, navigate: true);
     }
 }
