@@ -15,6 +15,9 @@ export default {
         info: '#4FC3F7',
         danger: '#EF5350',
       },
+      ringColor: {
+        accent: '#FFD54F',
+      },
     },
   },
   plugins: [],

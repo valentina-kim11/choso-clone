@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
-    @apply grid gap-2;
+    display: grid;
+    gap: 0.5rem;
 }
 
 [data-flux-label] {
@@ -15,7 +16,8 @@ input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
     outline: none;
-    @apply ring-2 ring-accent ring-offset-2 ring-offset-white;
+    outline: 2px solid #FFD54F;
+    outline-offset: 2px;
 }
 
 /* \[:where(&)\]:size-4 {
