@@ -32,15 +32,9 @@ class Withdrawals extends Component
                 'type' => 'withdraw',
                 'amount' => $withdrawal->amount,
                 'description' => 'Withdrawal #' . $withdrawal->id,
+                'by_admin' => true,
             ]);
         });
-
-        $withdrawal->status = 'approved';
-        $withdrawal->save();
-
-        $user = $withdrawal->user;
-        $user->wallet -= $withdrawal->amount;
-        $user->save();
 
     }
 
@@ -56,10 +50,6 @@ class Withdrawals extends Component
             $withdrawal->note = 'Rejected';
             $withdrawal->save();
         });
-
-        $withdrawal->status = 'rejected';
-        $withdrawal->note = 'Rejected';
-        $withdrawal->save();
 
     }
 

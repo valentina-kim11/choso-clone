@@ -34,6 +34,8 @@ class UserFactory extends Factory
 
             'is_approved' => true,
 
+            'is_approved' => true,
+
             'remember_token' => Str::random(10),
         ];
     }
