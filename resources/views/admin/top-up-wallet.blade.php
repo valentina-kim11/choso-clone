@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">{{ __('Top Up Wallet') }}</h1>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Top Up Wallet') }}</h1>
 
     @if(session('status'))
         <div class="mb-4 text-info">{{ session('status') }}</div>
@@ -9,7 +9,7 @@
         <input type="text" wire:model="search" placeholder="{{ __('Search') }}" class="border border-brand-gray p-1 rounded" />
     </div>
 
-    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <div class="bg-dark rounded-2xl shadow p-4 overflow-x-auto">
     <table class="min-w-full text-sm">
         <thead>
             <tr>

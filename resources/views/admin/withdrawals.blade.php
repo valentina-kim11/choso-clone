@@ -1,6 +1,6 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">{{ __('Yêu cầu rút tiền') }}</h1>
-    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Yêu cầu rút tiền') }}</h1>
+    <div class="bg-dark rounded-2xl shadow p-4 overflow-x-auto">
     <table class="min-w-full text-sm">
         <thead>
             <tr>

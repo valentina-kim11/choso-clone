@@ -1,5 +1,5 @@
 <form wire:submit.prevent="save" class="space-y-4">
-    <h1 class="text-xl font-semibold">{{ __('Add Product') }}</h1>
+    <h1 class="text-xl font-semibold text-primary">{{ __('Add Product') }}</h1>
     <div>
         <label class="block">{{ __('Name') }}</label>
         <input type="text" wire:model="name" class="w-full bg-brand-gray border border-brand-gray p-2" />

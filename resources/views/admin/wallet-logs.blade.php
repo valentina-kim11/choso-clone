@@ -1,9 +1,9 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">{{ __('Lịch sử ví') }}</h1>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Lịch sử ví') }}</h1>
     <div class="mb-4">
         <input type="number" wire:model="userId" placeholder="{{ __('User ID') }}" class="border border-brand-gray p-1 rounded" />
     </div>
-    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <div class="bg-dark rounded-2xl shadow p-4 overflow-x-auto">
     <table class="min-w-full text-sm">
         <thead>
             <tr>
