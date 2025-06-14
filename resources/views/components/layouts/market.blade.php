@@ -4,7 +4,7 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-dark text-white" x-data="{ filtersOpen: false }">
-        <x-layouts.header />
+        <livewire:header />
         <div class="flex">
             <aside class="hidden md:block w-64 border-r border-brand-gray p-4">
                 <livewire:shop.category-filter />
