@@ -1,5 +1,5 @@
 <div class="mb-4">
-    <select wire:model="category" class="bg-[#374151] border border-[#374151] p-2 rounded">
+    <select wire:model="category" class="bg-brand-gray border border-brand-gray p-2 rounded">
         <option value="">All Categories</option>
         @foreach($categories as $cat)
             <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
@@ -9,10 +9,10 @@
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     @foreach($products as $product)
-        <a href="{{ route('shop.show', $product) }}" class="border border-[#374151] rounded p-4" wire:navigate>
+        <a href="{{ route('shop.show', $product) }}" class="border border-brand-gray rounded p-4" wire:navigate>
             <h2 class="font-semibold text-lg">{{ $product->name }}</h2>
             <p class="text-xs text-gray-400 mb-1">{{ $product->category?->name }}</p>
-            <p class="text-[#4FC3F7]">{{ number_format($product->price) }} Scoin</p>
+            <p class="text-info">{{ number_format($product->price) }} Scoin</p>
         </a>
     @endforeach
 </div>

@@ -19,5 +19,5 @@
     <div class="flex items-center gap-2 mt-4">
         <span class="font-semibold">{{ $product->seller->name }}</span>
     </div>
-    <button wire:click="addToCart" class="bg-[#00796B] text-white px-4 py-2 rounded">Mua ngay</button>
+    <button wire:click="addToCart" class="bg-primary text-white px-4 py-2 rounded">Mua ngay</button>
 </div>
