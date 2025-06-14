@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto space-y-4">
+<div class="max-w-2xl mx-auto space-y-4 px-4 sm:px-6">
     <h1 class="text-2xl font-semibold">{{ $product->name }}</h1>
     <p>{{ $product->description }}</p>
     <p class="text-accent font-semibold">{{ number_format($product->price) }} Scoin</p>

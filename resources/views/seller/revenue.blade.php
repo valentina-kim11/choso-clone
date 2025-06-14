@@ -1,5 +1,10 @@
+
+<div class="px-4 sm:px-6">
+    <h1 class="text-xl font-semibold mb-4">{{ __('Doanh thu') }}</h1>
+
 <div>
     <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Doanh thu') }}</h1>
+
     <div class="mb-4">
         <select wire:model="filter" class="bg-dark border border-brand-gray p-1 rounded">
             <option value="day">{{ __('Hôm nay') }}</option>

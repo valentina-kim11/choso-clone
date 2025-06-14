@@ -1,5 +1,5 @@
 
-<div class="space-y-4">
+<div class="space-y-4 px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('Checkout') }}</h1>
     <ul class="space-y-2">
         @foreach($items as $item)
