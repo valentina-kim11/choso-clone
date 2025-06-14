@@ -2,14 +2,14 @@
     <h1 class="text-xl font-semibold mb-4">{{ __('Top Up Wallet') }}</h1>
 
     @if(session('status'))
-        <div class="mb-4 text-green-600 dark:text-green-400">{{ session('status') }}</div>
+        <div class="mb-4 text-info">{{ session('status') }}</div>
     @endif
 
     <div class="mb-4">
         <input type="text" wire:model="search" placeholder="{{ __('Search') }}" class="border p-1 rounded" />
     </div>
 
-    <table class="min-w-full bg-white dark:bg-zinc-800 text-sm">
+    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('Name') }}</th>
@@ -27,7 +27,7 @@
                         <input type="number" wire:model.defer="amounts.{{ $user->id }}" class="border p-1 rounded w-24" />
                     </td>
                     <td class="p-2">
-                        <button wire:click="topUp({{ $user->id }})" class="text-blue-600">{{ __('Top Up') }}</button>
+                        <button wire:click="topUp({{ $user->id }})" class="text-info">{{ __('Top Up') }}</button>
                     </td>
                 </tr>
             @endforeach
