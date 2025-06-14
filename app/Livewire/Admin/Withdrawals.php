@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Withdrawal;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -16,12 +17,12 @@ class Withdrawals extends Component
             return;
         }
 
-        $withdrawal->status = 'approved';
-        $withdrawal->save();
+        DB::transaction(function () use ($withdrawal) {
+            $withdrawal->status = 'approved';
+            $withdrawal->save();
 
-        $user = $withdrawal->user;
-        $user->wallet -= $withdrawal->amount;
-        $user->save();
+            $withdrawal->user()->decrement('wallet', $withdrawal->amount);
+        });
     }
 
     public function reject(Withdrawal $withdrawal): void
@@ -30,9 +31,11 @@ class Withdrawals extends Component
             return;
         }
 
-        $withdrawal->status = 'rejected';
-        $withdrawal->note = 'Rejected';
-        $withdrawal->save();
+        DB::transaction(function () use ($withdrawal) {
+            $withdrawal->status = 'rejected';
+            $withdrawal->note = 'Rejected';
+            $withdrawal->save();
+        });
     }
 
     public function render()

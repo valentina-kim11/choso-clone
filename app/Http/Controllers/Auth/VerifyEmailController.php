@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 
 class VerifyEmailController extends Controller
 {
@@ -15,7 +16,8 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+            $redirect = $this->redirectPath($request->user());
+            return redirect()->intended($redirect.'?verified=1');
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -25,6 +27,17 @@ class VerifyEmailController extends Controller
             event(new Verified($user));
         }
 
-        return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+        $redirect = $this->redirectPath($request->user());
+
+        return redirect()->intended($redirect.'?verified=1');
+    }
+
+    protected function redirectPath($user): string
+    {
+        return match ($user->role) {
+            User::ROLE_ADMIN => '/admin',
+            User::ROLE_SELLER => route('seller.dashboard', absolute: false),
+            default => route('shop.index', absolute: false),
+        };
     }
 }

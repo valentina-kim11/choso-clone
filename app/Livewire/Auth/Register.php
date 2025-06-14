@@ -38,6 +38,12 @@ class Register extends Component
 
         Auth::login($user);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        $redirect = match ($user->role) {
+            User::ROLE_ADMIN => '/admin',
+            User::ROLE_SELLER => route('seller.dashboard', absolute: false),
+            default => route('shop.index', absolute: false),
+        };
+
+        $this->redirect($redirect, navigate: true);
     }
 }
