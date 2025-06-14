@@ -25,10 +25,11 @@
             </nav>
         </aside>
         <div class="flex-1 flex flex-col">
-            <header class="bg-gray-800 text-white p-4">Admin Panel</header>
+            <x-layouts.header />
             <main class="flex-1 p-6">
                 {{ $slot }}
             </main>
+            <x-layouts.footer />
         </div>
     </div>
     @fluxScripts
