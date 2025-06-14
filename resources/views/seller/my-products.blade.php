@@ -1,11 +1,17 @@
+
 <div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('My Products') }}</h1>
+
+<div>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('My Products') }}</h1>
+
 
     <a href="{{ route('seller.products.create') }}" class="bg-info text-dark px-4 py-2 rounded" wire:navigate>{{ __('Add Product') }}</a>
 
 
 
-    <ul class="mt-4 space-y-2">
+    <div class="bg-dark rounded-2xl shadow p-4 mt-4">
+    <ul class="space-y-2">
         @foreach($products as $product)
             <li class="border border-brand-gray p-2 flex justify-between">
                 <span>{{ $product->name }}</span>
@@ -16,4 +22,5 @@
             </li>
         @endforeach
     </ul>
+    </div>
 </div>

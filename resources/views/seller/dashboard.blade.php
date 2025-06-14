@@ -1,23 +1,28 @@
+
 <div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('Tổng quan') }}</h1>
 
+<div>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Tổng quan') }}</h1>
+
+
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        <div class="border border-brand-gray bg-secondary p-4 rounded">
+        <div class="bg-dark rounded-2xl shadow p-4">
             <p class="text-sm text-brand-gray/60">{{ __('Doanh thu') }}</p>
-            <p class="text-2xl font-semibold">{{ number_format($revenue) }} Scoin</p>
+            <p class="text-2xl font-semibold text-accent">{{ number_format($revenue) }} Scoin</p>
         </div>
-        <div class="border border-brand-gray bg-secondary p-4 rounded">
+        <div class="bg-dark rounded-2xl shadow p-4">
             <p class="text-sm text-brand-gray/60">{{ __('Đơn hàng') }}</p>
-            <p class="text-2xl font-semibold">{{ $orderCount }}</p>
+            <p class="text-2xl font-semibold text-accent">{{ $orderCount }}</p>
         </div>
-        <div class="border border-brand-gray bg-secondary p-4 rounded">
+        <div class="bg-dark rounded-2xl shadow p-4">
             <p class="text-sm text-brand-gray/60">{{ __('Sản phẩm') }}</p>
-            <p class="text-2xl font-semibold">{{ $productCount }}</p>
+            <p class="text-2xl font-semibold text-accent">{{ $productCount }}</p>
         </div>
     </div>
 
-    <h2 class="text-lg font-semibold mb-2">{{ __('Top sản phẩm') }}</h2>
-    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <h2 class="text-lg font-semibold mb-2 text-primary">{{ __('Top sản phẩm') }}</h2>
+    <div class="bg-dark rounded-2xl shadow p-4 overflow-x-auto">
     <table class="w-full">
         <thead>
             <tr>

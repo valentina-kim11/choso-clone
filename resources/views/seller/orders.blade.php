@@ -1,5 +1,11 @@
+
 <div class="px-4 sm:px-6">
     <h1 class="text-xl font-semibold mb-4">{{ __('My Orders') }}</h1>
+
+<div>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('My Orders') }}</h1>
+    <div class="bg-dark rounded-2xl shadow p-4">
+
     <ul class="space-y-2">
         @foreach($orders as $order)
             <li class="border border-brand-gray p-2 rounded">
@@ -15,4 +21,5 @@
             </li>
         @endforeach
     </ul>
+    </div>
 </div>

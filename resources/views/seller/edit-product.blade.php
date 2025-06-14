@@ -1,5 +1,10 @@
+
 <form wire:submit.prevent="save" class="space-y-4 max-w-lg mx-auto p-4 sm:p-6">
     <h1 class="text-xl font-semibold">{{ __('Edit Product') }}</h1>
+
+<form wire:submit.prevent="save" class="space-y-4">
+    <h1 class="text-xl font-semibold text-primary">{{ __('Edit Product') }}</h1>
+
     <div>
         <label class="block">{{ __('Name') }}</label>
         <input type="text" wire:model="product.name" class="w-full bg-brand-gray border border-brand-gray p-2" />

@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">{{ __('Manage Categories') }}</h1>
+    <h1 class="text-xl font-semibold mb-4 text-primary">{{ __('Manage Categories') }}</h1>
 
     @if(session('status'))
         <div class="mb-4 text-info">{{ session('status') }}</div>
@@ -15,7 +15,7 @@
         @endif
     </form>
 
-    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <div class="bg-dark rounded-2xl shadow p-4 overflow-x-auto">
     <table class="min-w-full text-sm">
         <thead>
             <tr>
