@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\Services\PdfService;
 use App\Models\OrderItem;
 use App\Livewire\Shop\Index as ShopIndex;
 use App\Livewire\Shop\Show as ShopShow;
@@ -21,7 +23,7 @@ Route::middleware(['auth', 'buyerOnly'])->group(function () {
     Route::get('/orders/history', OrdersHistory::class)->name('orders.history');
     Route::get('/shop/wallet-logs', BuyerWalletLogs::class)->name('shop.wallet-logs');
 
-    Route::get('/download/{orderItem}', function (OrderItem $orderItem) {
+    Route::get('/download/{orderItem}', function (OrderItem $orderItem, PdfService $pdfService) {
         $user = Auth::user();
 
         if (! $user || $orderItem->order->user_id !== $user->id) {
@@ -41,7 +43,17 @@ Route::middleware(['auth', 'buyerOnly'])->group(function () {
             'ip_address' => request()->ip(),
         ]);
 
-        return Storage::disk('products')->download($orderItem->product->file_path);
+        $path = $orderItem->product->file_path;
+        if (Str::endsWith($path, '.pdf')) {
+            $source = Storage::disk('products')->path($path);
+            $temp = tempnam(sys_get_temp_dir(), 'pdf');
+            $tempPdf = $temp . '.pdf';
+            $pdfService->addWatermark($source, $tempPdf, $user->email);
+
+            return response()->download($tempPdf, basename($path))->deleteFileAfterSend(true);
+        }
+
+        return Storage::disk('products')->download($path);
     })->name('download');
 });
 
