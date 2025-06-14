@@ -14,7 +14,8 @@ Route::middleware(['auth', 'sellerOnly'])
     ->prefix('seller')
     ->name('seller.')
     ->group(function () {
-        Route::get('/', SellerDashboard::class)->name('dashboard');
+        Route::get('/dashboard', SellerDashboard::class)->name('dashboard');
+        Route::get('/', fn () => to_route('seller.dashboard'));
         Route::get('/orders', SellerOrders::class)->name('orders');
         Route::get('/products/my', MyProducts::class)->name('products.my');
         Route::get('/products/create', CreateProduct::class)->name('products.create');
