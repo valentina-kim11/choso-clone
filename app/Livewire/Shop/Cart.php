@@ -3,6 +3,7 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Product;
+use App\Services\CartService;
 use App\Services\CheckoutService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -16,7 +17,7 @@ class Cart extends Component
 
     public function mount(): void
     {
-        $this->loadFromSession();
+        $this->items = app(CartService::class)->loadFromSession();
     }
 
 
@@ -36,19 +37,19 @@ class Cart extends Component
             ];
         }
 
-        $this->storeToSession();
+        app(CartService::class)->storeToSession($this->items);
     }
 
     public function remove(int $productId): void
     {
         unset($this->items[$productId]);
-        $this->storeToSession();
+        app(CartService::class)->storeToSession($this->items);
     }
 
     public function clear(): void
     {
         $this->items = [];
-        session()->forget('cart.items');
+        app(CartService::class)->clearSession();
     }
 
     #[On('cart-cleared')]
@@ -57,29 +58,6 @@ class Cart extends Component
         $this->clear();
     }
 
-    protected function loadFromSession(): void
-    {
-        $stored = session('cart.items', []);
-        foreach ($stored as $id => $quantity) {
-            $product = Product::find($id);
-            if ($product) {
-                $this->items[$id] = [
-                    'product' => $product,
-                    'quantity' => $quantity,
-                ];
-            }
-        }
-    }
-
-    protected function storeToSession(): void
-    {
-        $sessionItems = [];
-        foreach ($this->items as $id => $item) {
-            $sessionItems[$id] = $item['quantity'];
-        }
-
-        session(['cart.items' => $sessionItems]);
-    }
 
     /**
      * Calculate subtotal for a given product in the cart.

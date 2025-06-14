@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Shop;
 
+use App\Services\CartService;
 use App\Services\CheckoutService;
-use App\Models\Product;
 use App\Models\Coupon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -19,7 +19,7 @@ class Checkout extends Component
 
     public function mount(): void
     {
-        $this->loadFromSession();
+        $this->items = app(CartService::class)->loadFromSession();
     }
 
     public function pay(): RedirectResponse|null
@@ -53,24 +53,10 @@ class Checkout extends Component
             ->sum(fn ($item) => $item['product']->price * $item['quantity']);
     }
 
-    protected function loadFromSession(): void
-    {
-        $stored = session('cart.items', []);
-        foreach ($stored as $id => $quantity) {
-            $product = Product::find($id);
-            if ($product) {
-                $this->items[$id] = [
-                    'product' => $product,
-                    'quantity' => $quantity,
-                ];
-            }
-        }
-    }
-
     protected function clear(): void
     {
         $this->items = [];
-        session()->forget('cart.items');
+        app(CartService::class)->clearSession();
     }
 
     public function applyCoupon(): void
