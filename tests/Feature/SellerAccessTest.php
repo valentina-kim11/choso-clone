@@ -20,6 +20,7 @@ class SellerAccessTest extends TestCase
 
         $this->actingAs($buyer);
         $this->get('/seller')->assertStatus(403);
+        $this->get('/seller/dashboard')->assertStatus(403);
         $this->get('/seller/orders')->assertStatus(403);
     }
 

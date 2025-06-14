@@ -1,14 +1,40 @@
 <div>
-    <h1 class="text-2xl font-semibold mb-4">My Products</h1>
+    <h1 class="text-xl font-semibold mb-4">Tổng quan</h1>
 
-    <a href="#" class="bg-[#4FC3F7] text-black px-4 py-2 rounded">Add Product</a>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="border border-[#374151] p-4 rounded">
+            <p class="text-sm text-gray-400">Doanh thu</p>
+            <p class="text-2xl font-semibold">{{ number_format($revenue) }} Scoin</p>
+        </div>
+        <div class="border border-[#374151] p-4 rounded">
+            <p class="text-sm text-gray-400">Đơn hàng</p>
+            <p class="text-2xl font-semibold">{{ $orderCount }}</p>
+        </div>
+        <div class="border border-[#374151] p-4 rounded">
+            <p class="text-sm text-gray-400">Sản phẩm</p>
+            <p class="text-2xl font-semibold">{{ $productCount }}</p>
+        </div>
+    </div>
 
-
-    <a href="{{ route('seller.products.create') }}" class="bg-[#4FC3F7] text-black px-4 py-2 rounded" wire:navigate>Add Product</a>
-
-    <ul class="mt-4 space-y-2">
-        @foreach($products as $product)
-            <li class="border border-[#374151] p-2">{{ $product->name }}</li>
-        @endforeach
-    </ul>
+    <h2 class="text-lg font-semibold mb-2">Top sản phẩm</h2>
+    <table class="w-full border border-[#374151]">
+        <thead>
+            <tr>
+                <th class="p-2 text-left">Tên</th>
+                <th class="p-2 text-center">Số lượt bán</th>
+                <th class="p-2 text-right">Doanh thu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($topProducts as $product)
+                <tr>
+                    <td class="p-2 border-t border-[#374151]">{{ $product->name }}</td>
+                    <td class="p-2 border-t border-[#374151] text-center">{{ $product->total_quantity ?? 0 }}</td>
+                    <td class="p-2 border-t border-[#374151] text-right">
+                        {{ number_format(($product->total_quantity ?? 0) * $product->price) }} Scoin
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
