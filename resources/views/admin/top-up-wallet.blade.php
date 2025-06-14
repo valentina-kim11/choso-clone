@@ -9,7 +9,8 @@
         <input type="text" wire:model="search" placeholder="{{ __('Search') }}" class="border p-1 rounded" />
     </div>
 
-    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="min-w-full text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('Name') }}</th>
@@ -27,10 +28,11 @@
                         <input type="number" wire:model.defer="amounts.{{ $user->id }}" class="border p-1 rounded w-24" />
                     </td>
                     <td class="p-2">
-                        <button wire:click="topUp({{ $user->id }})" class="text-info">{{ __('Top Up') }}</button>
+                        <button wire:click="topUp({{ $user->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Top Up') }}</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>

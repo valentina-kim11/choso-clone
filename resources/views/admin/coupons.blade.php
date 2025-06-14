@@ -22,7 +22,8 @@
         </div>
     </form>
 
-    <table class="min-w-full bg-white dark:bg-brand-gray text-sm">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="min-w-full text-sm">
         <thead>
             <tr>
                 <th class="p-2">{{ __('Code') }}</th>
@@ -52,11 +53,12 @@
                         @endif
                     </td>
                     <td class="p-2 space-x-2">
-                        <button wire:click="edit({{ $coupon->id }})" class="text-info">{{ __('Edit') }}</button>
+                        <button wire:click="edit({{ $coupon->id }})" class="bg-info text-dark px-2 py-1 rounded">{{ __('Edit') }}</button>
                         <button wire:click="delete({{ $coupon->id }})" class="text-danger">{{ __('Delete') }}</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>

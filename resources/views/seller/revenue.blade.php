@@ -7,7 +7,8 @@
         </select>
     </div>
     <p class="mb-2">{{ __('Tổng tiền') }}: {{ number_format($total) }} Scoin</p>
-    <table class="w-full border border-brand-gray">
+    <div class="border border-brand-gray rounded bg-secondary overflow-x-auto">
+    <table class="w-full">
         <thead>
             <tr>
                 <th class="p-2 text-left">{{ __('Sản phẩm') }}</th>
@@ -25,4 +26,5 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
