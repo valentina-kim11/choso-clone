@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function licenseKey()
+    {
+        return $this->hasOne(LicenseKey::class);
+    }
 }
