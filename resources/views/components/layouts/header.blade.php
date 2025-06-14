@@ -1,21 +1,21 @@
-<header class="bg-primary text-white p-4 flex items-center">
-    <a href="{{ route('home') }}" class="font-bold mr-auto" wire:navigate>{{ __('Choso') }}</a>
-    <nav class="flex items-center gap-4">
+<header class="bg-primary text-white p-4 flex items-center justify-between">
+    <a href="{{ route('home') }}" class="font-bold" wire:navigate>{{ __('Choso') }}</a>
+    <nav class="flex items-center gap-4 ml-auto">
         @auth
             @if(auth()->user()->role === 'seller')
-                <a href="{{ route('seller.dashboard') }}" wire:navigate class="hover:text-accent">{{ __('Tổng quan') }}</a>
-                <a href="{{ route('seller.revenue') }}" wire:navigate class="hover:text-accent">{{ __('Doanh thu') }}</a>
-                <a href="{{ route('seller.coupons') }}" wire:navigate class="hover:text-accent">{{ __('Coupons') }}</a>
-                <a href="{{ route('seller.withdraw') }}" wire:navigate class="hover:text-accent">{{ __('Rút Scoin') }}</a>
-                <a href="{{ route('seller.wallet-logs') }}" wire:navigate class="hover:text-accent">{{ __('Lịch sử ví') }}</a>
+                <a href="{{ route('seller.dashboard') }}" wire:navigate class="text-info hover:text-accent">{{ __('Tổng quan') }}</a>
+                <a href="{{ route('seller.revenue') }}" wire:navigate class="text-info hover:text-accent">{{ __('Doanh thu') }}</a>
+                <a href="{{ route('seller.coupons') }}" wire:navigate class="text-info hover:text-accent">{{ __('Coupons') }}</a>
+                <a href="{{ route('seller.withdraw') }}" wire:navigate class="text-info hover:text-accent">{{ __('Rút Scoin') }}</a>
+                <a href="{{ route('seller.wallet-logs') }}" wire:navigate class="text-info hover:text-accent">{{ __('Lịch sử ví') }}</a>
             @else
-                <a href="{{ route('shop.wallet-logs') }}" wire:navigate class="hover:text-accent">{{ __('Lịch sử ví') }}</a>
+                <a href="{{ route('shop.wallet-logs') }}" wire:navigate class="text-info hover:text-accent">{{ __('Lịch sử ví') }}</a>
             @endif
-            <a href="{{ route('orders.history') }}" wire:navigate class="hover:text-accent">{{ __('Order History') }}</a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="hover:text-accent">{{ __('Logout') }}</a>
+            <a href="{{ route('orders.history') }}" wire:navigate class="text-info hover:text-accent">{{ __('Order History') }}</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-info hover:text-accent">{{ __('Logout') }}</a>
             <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">@csrf</form>
         @else
-            <a href="{{ route('login') }}" wire:navigate class="hover:text-accent">{{ __('Login') }}</a>
+            <a href="{{ route('login') }}" wire:navigate class="text-info hover:text-accent">{{ __('Login') }}</a>
         @endauth
         <button type="button" class="relative hover:text-accent" x-data @click="$dispatch('toggle-cart')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
