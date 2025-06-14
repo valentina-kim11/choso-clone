@@ -9,6 +9,15 @@
         <input type="number" wire:model="price" step="0.01" class="w-full bg-[#374151] border border-[#374151] p-2" />
     </div>
     <div>
+        <label class="block">Category</label>
+        <select wire:model="category_id" class="w-full bg-[#374151] border border-[#374151] p-2">
+            <option value="">-- Select --</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div>
         <label class="block">Description</label>
         <textarea wire:model="description" class="w-full bg-[#374151] border border-[#374151] p-2"></textarea>
     </div>

@@ -30,7 +30,9 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'role' => 'buyer',
 
-            'wallet' => 0,
+            'wallet' => 10000,
+
+            'is_approved' => true,
 
             'is_approved' => true,
 
