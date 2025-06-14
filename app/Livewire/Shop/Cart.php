@@ -3,14 +3,6 @@
 namespace App\Livewire\Shop;
 
 use App\Models\Product;
-
-
-
-use App\Services\Checkout;
-use Illuminate\Support\Facades\Auth;
-
-
-
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -19,8 +11,6 @@ use Livewire\Component;
 class Cart extends Component
 {
     public array $items = [];
-
-
     public function mount(): void
     {
         $this->loadFromSession();
@@ -81,22 +71,10 @@ class Cart extends Component
         foreach ($this->items as $id => $item) {
             $sessionItems[$id] = $item['quantity'];
         }
+
         session(['cart.items' => $sessionItems]);
-
-
-
     }
 
-    public function pay()
-    {
-        Checkout::pay(Auth::user(), $this->items);
-        $this->items = [];
-
-        return redirect()->route('checkout.success');
-
-
-
-    }
 
     public function render()
     {

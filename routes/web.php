@@ -20,17 +20,22 @@ Route::view('dashboard', 'dashboard')
 
 Route::get('/products', ShopIndex::class)->name('shop.index');
 Route::get('/products/{product}', ShopShow::class)->name('shop.show');
-Route::get('/cart', ShopCart::class)->name('shop.cart');
+Route::get('/cart', ShopCart::class)
+    ->middleware(['auth', 'buyer'])
+    ->name('shop.cart');
 
 Route::get('/checkout', ShopCheckout::class)
-    ->middleware('auth')
+    ->middleware(['auth', 'buyer'])
     ->name('shop.checkout');
 Route::get('/thank-you', ShopThankYou::class)
-    ->middleware('auth')
+    ->middleware(['auth', 'buyer'])
     ->name('shop.thank-you');
 Route::get('/orders/history', OrdersHistory::class)
-    ->middleware('auth')
+    ->middleware(['auth', 'buyer'])
     ->name('orders.history');
+Route::get('/shop/wallet-logs', \App\Livewire\Buyer\WalletLogs::class)
+    ->middleware(['auth', 'buyer'])
+    ->name('shop.wallet-logs');
 
 Route::get('/download/{orderItem}', function (\App\Models\OrderItem $orderItem) {
     $user = \Illuminate\Support\Facades\Auth::user();
@@ -54,16 +59,19 @@ Route::get('/download/{orderItem}', function (\App\Models\OrderItem $orderItem) 
 
     return \Illuminate\Support\Facades\Storage::disk('products')
         ->download($orderItem->product->file_path);
-})->middleware('auth')->name('download');
+})->middleware(['auth', 'buyer'])->name('download');
 
 Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/seller', SellerDashboard::class)->name('seller.dashboard');
     Route::get('/seller/orders', \App\Livewire\Seller\Orders::class)->name('seller.orders');
     Route::get('/products/my', \App\Livewire\Seller\MyProducts::class)->name('products.my');
     Route::get('/seller/products/create', \App\Livewire\Seller\CreateProduct::class)->name('seller.products.create');
+    Route::get('/seller/revenue', \App\Livewire\Seller\Revenue::class)->name('seller.revenue');
+    Route::get('/seller/withdraw', \App\Livewire\Seller\Withdraw::class)->name('seller.withdraw');
+    Route::get('/seller/wallet-logs', \App\Livewire\Seller\WalletLogs::class)->name('seller.wallet-logs');
 });
 
-Route::get('/checkout/success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -74,3 +82,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
