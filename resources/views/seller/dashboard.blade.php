@@ -1,28 +1,28 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">Tổng quan</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('Tổng quan') }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">Doanh thu</p>
+            <p class="text-sm text-gray-400">{{ __('Doanh thu') }}</p>
             <p class="text-2xl font-semibold">{{ number_format($revenue) }} Scoin</p>
         </div>
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">Đơn hàng</p>
+            <p class="text-sm text-gray-400">{{ __('Đơn hàng') }}</p>
             <p class="text-2xl font-semibold">{{ $orderCount }}</p>
         </div>
         <div class="border border-brand-gray p-4 rounded">
-            <p class="text-sm text-gray-400">Sản phẩm</p>
+            <p class="text-sm text-gray-400">{{ __('Sản phẩm') }}</p>
             <p class="text-2xl font-semibold">{{ $productCount }}</p>
         </div>
     </div>
 
-    <h2 class="text-lg font-semibold mb-2">Top sản phẩm</h2>
+    <h2 class="text-lg font-semibold mb-2">{{ __('Top sản phẩm') }}</h2>
     <table class="w-full border border-brand-gray">
         <thead>
             <tr>
-                <th class="p-2 text-left">Tên</th>
-                <th class="p-2 text-center">Số lượt bán</th>
-                <th class="p-2 text-right">Doanh thu</th>
+                <th class="p-2 text-left">{{ __('Tên') }}</th>
+                <th class="p-2 text-center">{{ __('Số lượt bán') }}</th>
+                <th class="p-2 text-right">{{ __('Doanh thu') }}</th>
             </tr>
         </thead>
         <tbody>

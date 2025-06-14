@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">Yêu cầu rút tiền</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('Yêu cầu rút tiền') }}</h1>
     <table class="min-w-full bg-white dark:bg-zinc-800 text-sm">
         <thead>
             <tr>
-                <th class="p-2">User</th>
-                <th class="p-2">Amount</th>
-                <th class="p-2">Status</th>
-                <th class="p-2">Action</th>
+                <th class="p-2">{{ __('User') }}</th>
+                <th class="p-2">{{ __('Amount') }}</th>
+                <th class="p-2">{{ __('Status') }}</th>
+                <th class="p-2">{{ __('Action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -17,8 +17,8 @@
                     <td class="p-2">{{ $withdrawal->status }}</td>
                     <td class="p-2 space-x-2">
                         @if($withdrawal->status === 'pending')
-                            <button wire:click="approve({{ $withdrawal->id }})" class="text-green-600">Duyệt</button>
-                            <button wire:click="reject({{ $withdrawal->id }})" class="text-red-600">Từ chối</button>
+                            <button wire:click="approve({{ $withdrawal->id }})" class="text-green-600">{{ __('Duyệt') }}</button>
+                            <button wire:click="reject({{ $withdrawal->id }})" class="text-red-600">{{ __('Từ chối') }}</button>
                         @endif
                     </td>
                 </tr>

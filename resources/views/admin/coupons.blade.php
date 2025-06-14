@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-xl font-semibold mb-4">Manage Coupons</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('Manage Coupons') }}</h1>
 
     @if(session('status'))
         <div class="mb-4 text-green-600 dark:text-green-400">{{ session('status') }}</div>
@@ -7,17 +7,17 @@
 
     <form wire:submit.prevent="save" class="mb-4 space-y-2">
         <div class="space-x-2">
-            <input type="text" wire:model="code" placeholder="Code" class="border p-1 rounded" />
+            <input type="text" wire:model="code" placeholder="{{ __('Code') }}" class="border p-1 rounded" />
             <select wire:model="type" class="border p-1 rounded">
-                <option value="percent">Percent</option>
-                <option value="fixed">Fixed</option>
+                <option value="percent">{{ __('Percent') }}</option>
+                <option value="fixed">{{ __('Fixed') }}</option>
             </select>
-            <input type="number" wire:model="value" placeholder="Value" class="border p-1 rounded w-24" step="0.01" />
+            <input type="number" wire:model="value" placeholder="{{ __('Value') }}" class="border p-1 rounded w-24" step="0.01" />
             <input type="date" wire:model="expires_at" class="border p-1 rounded" />
-            <input type="number" wire:model="usage_limit" placeholder="Usage limit" class="border p-1 rounded w-24" />
-            <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">{{ $editingId ? 'Update' : 'Add' }}</button>
+            <input type="number" wire:model="usage_limit" placeholder="{{ __('Usage limit') }}" class="border p-1 rounded w-24" />
+            <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">{{ $editingId ? __('Update') : __('Add') }}</button>
             @if($editingId)
-                <button type="button" wire:click="$set('editingId', null)" class="px-2">Cancel</button>
+                <button type="button" wire:click="$set('editingId', null)" class="px-2">{{ __('Cancel') }}</button>
             @endif
         </div>
     </form>
@@ -25,13 +25,13 @@
     <table class="min-w-full bg-white dark:bg-zinc-800 text-sm">
         <thead>
             <tr>
-                <th class="p-2">Code</th>
-                <th class="p-2">Type</th>
-                <th class="p-2">Value</th>
-                <th class="p-2">Expires</th>
-                <th class="p-2">Used</th>
-                <th class="p-2">Status</th>
-                <th class="p-2">Action</th>
+                <th class="p-2">{{ __('Code') }}</th>
+                <th class="p-2">{{ __('Type') }}</th>
+                <th class="p-2">{{ __('Value') }}</th>
+                <th class="p-2">{{ __('Expires') }}</th>
+                <th class="p-2">{{ __('Used') }}</th>
+                <th class="p-2">{{ __('Status') }}</th>
+                <th class="p-2">{{ __('Action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -44,16 +44,16 @@
                     <td class="p-2">{{ $coupon->used }}{{ $coupon->usage_limit ? ' / ' . $coupon->usage_limit : '' }}</td>
                     <td class="p-2">
                         @if($coupon->isExpired())
-                            Expired
+                            {{ __('Expired') }}
                         @elseif($coupon->isMaxed())
-                            Limit reached
+                            {{ __('Limit reached') }}
                         @else
-                            Active
+                            {{ __('Active') }}
                         @endif
                     </td>
                     <td class="p-2 space-x-2">
-                        <button wire:click="edit({{ $coupon->id }})" class="text-blue-500">Edit</button>
-                        <button wire:click="delete({{ $coupon->id }})" class="text-red-600">Delete</button>
+                        <button wire:click="edit({{ $coupon->id }})" class="text-blue-500">{{ __('Edit') }}</button>
+                        <button wire:click="delete({{ $coupon->id }})" class="text-red-600">{{ __('Delete') }}</button>
                     </td>
                 </tr>
             @endforeach
