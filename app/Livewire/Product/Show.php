@@ -17,6 +17,7 @@ class Show extends Component
     {
         $this->product = Product::where('slug', $slug)
             ->with('category', 'seller')
+            ->withSum('orderItems as sales_count', 'quantity')
             ->firstOrFail();
 
         $user = Auth::user();

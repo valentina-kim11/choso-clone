@@ -16,13 +16,18 @@
         @if($product->category)
             <p class="text-sm text-brand-gray">{{ $product->category->name }}</p>
         @endif
+        <div class="flex items-center gap-2">
+            <p class="text-accent font-semibold">{{ number_format($product->price) }} Scoin</p>
+            <span class="bg-primary text-white text-xs px-2 py-0.5 rounded">{{ __('Instant download') }}</span>
+            <span class="text-sm text-brand-gray">{{ number_format($product->sales_count ?? 0) }} {{ __('Số lượt bán') }}</span>
+        </div>
         <div class="prose prose-invert">
             {!! $product->description !!}
         </div>
         <div class="flex items-center gap-2 mt-4">
             <span class="font-semibold">{{ $product->seller->name }}</span>
         </div>
-        <button wire:click="addToCart" class="bg-primary text-white px-4 py-2 rounded">{{ __('Mua ngay') }}</button>
+        <button wire:click="addToCart" class="bg-primary text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-accent">{{ __('Mua ngay') }}</button>
         @if($licenseKey)
             <div class="bg-secondary text-dark p-2 rounded">
                 {{ __('License') }}: {{ $licenseKey }}
