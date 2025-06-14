@@ -10,8 +10,8 @@
             <li class="border border-brand-gray p-2 flex justify-between">
                 <span>{{ $product->name }}</span>
                 <div class="space-x-2">
-                    <a href="#" class="text-info">{{ __('Edit') }}</a>
-                    <a href="#" class="text-danger">{{ __('Delete') }}</a>
+                    <a href="{{ route('seller.products.edit', $product) }}" class="text-info" wire:navigate>{{ __('Edit') }}</a>
+                    <button type="button" wire:click="delete({{ $product->id }})" class="text-danger">{{ __('Delete') }}</button>
                 </div>
             </li>
         @endforeach
