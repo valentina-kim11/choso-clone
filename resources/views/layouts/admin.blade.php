@@ -15,6 +15,8 @@
 
                 <a href="{{ route('admin.approve-sellers') }}" class="block">Duyệt Seller</a>
 
+                <a href="{{ route('admin.categories') }}" class="block">Categories</a>
+
             </nav>
         </aside>
         <div class="flex-1 flex flex-col">
