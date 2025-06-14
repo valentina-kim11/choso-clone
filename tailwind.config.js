@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         primary: '#00796B',
-        secondary: '#E0F2F1',
+        secondary: '#4FC3F7',
         dark: '#111827',
         'brand-gray': '#374151',
         accent: '#FFD54F',
-        info: '#4FC3F7',
+        info: '#E0F2F1',
         danger: '#EF5350',
       },
       ringColor: {
