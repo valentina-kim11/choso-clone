@@ -1,4 +1,4 @@
-<header class="bg-[#00796B] p-4 flex justify-between items-center">
+<header class="bg-primary p-4 flex justify-between items-center">
     <a href="{{ route('home') }}" class="font-bold" wire:navigate>Choso</a>
     <nav class="flex items-center gap-4">
         @auth

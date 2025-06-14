@@ -4,7 +4,7 @@
         @foreach($items as $item)
             <li class="flex justify-between mb-2">
                 <span>{{ $item['product']->name }} x {{ $item['quantity'] }}</span>
-                <button wire:click="remove({{ $item['product']->id }})" class="text-[#EF5350]">Remove</button>
+                <button wire:click="remove({{ $item['product']->id }})" class="text-danger">Remove</button>
             </li>
         @endforeach
     </ul>
@@ -13,7 +13,7 @@
     <div class="mt-4 font-semibold">
         Total: {{ number_format(collect($items)->sum(fn($i) => $i['product']->price * $i['quantity'])) }} Scoin
     </div>
-    <a href="{{ route('shop.checkout') }}" wire:navigate class="mt-2 inline-block bg-[#00796B] text-white px-2 py-1 rounded">Checkout</a>
+    <a href="{{ route('shop.checkout') }}" wire:navigate class="mt-2 inline-block bg-primary text-white px-2 py-1 rounded">Checkout</a>
 
 
 </div>

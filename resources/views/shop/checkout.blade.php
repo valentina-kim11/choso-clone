@@ -18,7 +18,7 @@
         <div>Discount: -{{ number_format($discount) }} Scoin</div>
     @endif
     <div class="font-semibold">Total: {{ number_format($payable) }} Scoin</div>
-    <button wire:click="pay" class="bg-[#00796B] text-white px-4 py-2 rounded">Pay with Wallet</button>
+    <button wire:click="pay" class="bg-primary text-white px-4 py-2 rounded">Pay with Wallet</button>
     <x-auth-session-status class="text-center" :status="session('status')" />
 </div>
 

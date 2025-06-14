@@ -3,7 +3,7 @@
     <h1 class="text-xl font-semibold mb-4">Lịch sử đơn hàng</h1>
     <ul class="space-y-2">
         @foreach($orders as $order)
-            <li class="border border-[#374151] p-2 rounded">
+            <li class="border border-brand-gray p-2 rounded">
                 <div>Tổng: {{ number_format($order->amount) }} Scoin</div>
                 @if($order->licenseKey)
                     <div>License: {{ $order->licenseKey->key }}</div>
@@ -13,7 +13,7 @@
 
                         <li>
                             {{ $item->product->name }} x {{ $item->quantity }}
-                            <a href="{{ route('download', $item) }}" class="text-[#4FC3F7] ml-2">Tải file</a>
+                            <a href="{{ route('download', $item) }}" class="text-info ml-2">Tải file</a>
                         </li>
 
                     @endforeach
